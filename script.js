@@ -157,13 +157,17 @@ function initCounterPage() {
         if (currentCount < targetCount) {
             currentCount += Math.floor(Math.random() * 3) + 1;
             
-            // Update display
+            // Update display with flip animation
             const digits = currentCount.toString().padStart(digitCount, '0').split('');
             const digitElements = counterDisplay.querySelectorAll('.digit');
             
             digits.forEach((digit, index) => {
-                if (digitElements[index]) {
-                    digitElements[index].textContent = digit;
+                if (digitElements[index] && digitElements[index].textContent !== digit) {
+                    digitElements[index].classList.add('changing');
+                    setTimeout(() => {
+                        digitElements[index].textContent = digit;
+                        digitElements[index].classList.remove('changing');
+                    }, 300);
                 }
             });
             
@@ -215,7 +219,8 @@ function initMeditationPage() {
         isSessionActive = true;
         currentStep = 0;
         
-        // Change background
+        // Change background with smooth transition
+        document.body.style.transition = 'background 2s ease-in-out';
         document.body.style.background = 'linear-gradient(135deg, #0a0a0b 0%, #1a2a3a 100%)';
         
         // Start session
