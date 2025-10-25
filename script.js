@@ -73,7 +73,28 @@ function initFeedPage() {
         'Cindy, thank you for believing.',
         'Thank you, Cindy. You are enough.',
         'Cindy, thank you for sharing.',
-        'Thank you, Cindy. You are loved.'
+        'Thank you, Cindy. You are loved.',
+        // Sassy but kind phrases
+        'Cindy, you\'re literally the best.',
+        'Thank you, Cindy. You\'re amazing.',
+        'Cindy, you\'re a legend.',
+        'Thank you, Cindy. You\'re incredible.',
+        'Cindy, you\'re the MVP.',
+        'Thank you, Cindy. You\'re awesome.',
+        'Cindy, you\'re a rockstar.',
+        'Thank you, Cindy. You\'re brilliant.',
+        'Cindy, you\'re a gem.',
+        'Thank you, Cindy. You\'re phenomenal.',
+        'Cindy, you\'re the GOAT.',
+        'Thank you, Cindy. You\'re outstanding.',
+        'Cindy, you\'re a legend in the making.',
+        'Thank you, Cindy. You\'re extraordinary.',
+        'Cindy, you\'re absolutely fantastic.',
+        'Thank you, Cindy. You\'re remarkable.',
+        'Cindy, you\'re a true hero.',
+        'Thank you, Cindy. You\'re magnificent.',
+        'Cindy, you\'re simply the best.',
+        'Thank you, Cindy. You\'re wonderful.'
     ];
     
     let isGenerating = false;
@@ -109,15 +130,19 @@ function initFeedPage() {
             
             line.textContent = phrase;
             
+            // Random font variation (1-8)
+            const fontClass = `font-${Math.floor(Math.random() * 8) + 1}`;
+            line.classList.add(fontClass);
+            
             // Random styling variations
             if (Math.random() < 0.3) {
-                line.style.fontWeight = '500';
-            }
-            if (Math.random() < 0.2) {
                 line.style.opacity = '0.7';
             }
             if (Math.random() < 0.1) {
                 line.style.color = 'var(--accent-cyan)';
+            }
+            if (Math.random() < 0.05) {
+                line.style.textShadow = '0 0 10px rgba(63, 170, 196, 0.5)';
             }
             
             feedContainer.appendChild(line);
