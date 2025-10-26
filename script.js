@@ -183,11 +183,38 @@ function initSinglePage() {
         initMeditationPage();
         initFeedPage();
         
+        // Add button functionality for single page
+        addSinglePageButtonHandlers();
+        
         console.log('All sections initialized');
     }, 100);
     
     // Remove page navigation for single page
     removePageNavigation();
+}
+
+function addSinglePageButtonHandlers() {
+    // Add click handlers for buttons in single page layout
+    const languagesButton = document.getElementById('languagesButton');
+    const meditationButton = document.getElementById('meditationButton');
+    
+    if (languagesButton) {
+        languagesButton.addEventListener('click', function() {
+            console.log('Languages button clicked');
+            // Hide the button and start the language cycling
+            this.style.display = 'none';
+            // The language cycling should already be running from initLanguagesPage
+        });
+    }
+    
+    if (meditationButton) {
+        meditationButton.addEventListener('click', function() {
+            console.log('Meditation button clicked');
+            // Hide the button and start the meditation session
+            this.style.display = 'none';
+            // The meditation should already be running from initMeditationPage
+        });
+    }
 }
 
 
