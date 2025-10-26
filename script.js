@@ -191,138 +191,120 @@ function initSinglePage() {
     removePageNavigation();
 }
 
-function addSinglePageButtonHandlers() {
-    // Add click handlers for buttons in single page layout
-    const languagesButton = document.getElementById('languagesButton');
-    const meditationButton = document.getElementById('meditationButton');
-    
-    if (languagesButton) {
-        languagesButton.addEventListener('click', function() {
-            console.log('Languages button clicked');
-            // Hide the button
-            this.style.display = 'none';
-            // Force restart language cycling
-            restartLanguageCycling();
-        });
-    }
-    
-    if (meditationButton) {
-        meditationButton.addEventListener('click', function() {
-            console.log('Meditation button clicked');
-            // Hide the button
-            this.style.display = 'none';
-            // Force restart meditation
-            restartMeditation();
-        });
-    }
-}
+// Global Gratitude - Simple language cycling
+let isLanguageCycling = false;
 
-function restartLanguageCycling() {
-    // Stop any existing language loop
-    if (languageLoop) {
-        clearTimeout(languageLoop);
-        languageLoop = null;
-    }
-    
-    // Restart language cycling
+function startGlobalGratitude() {
     const container = document.getElementById('languagesContainer');
-    if (container) {
-        // Clear existing content
-        container.innerHTML = '';
+    const button = document.getElementById('languagesButton');
+    
+    if (!container) return;
+    
+    // Hide button
+    if (button) button.style.display = 'none';
+    
+    // Stop if already cycling
+    if (isLanguageCycling) return;
+    isLanguageCycling = true;
+    
+    const languages = [
+        { lang: "English", text: "Thank you, Cindy." },
+        { lang: "Spanish", text: "Gracias, Cindy." },
+        { lang: "French", text: "Merci, Cindy." },
+        { lang: "German", text: "Danke, Cindy." },
+        { lang: "Italian", text: "Grazie, Cindy." },
+        { lang: "Portuguese", text: "Obrigado, Cindy." },
+        { lang: "Japanese", text: "ありがとう, Cindy." },
+        { lang: "Korean", text: "감사합니다, Cindy." },
+        { lang: "Chinese", text: "谢谢, Cindy." },
+        { lang: "Arabic", text: "شكراً, Cindy." },
+        { lang: "Russian", text: "Спасибо, Cindy." },
+        { lang: "Hindi", text: "धन्यवाद, Cindy." }
+    ];
+    
+    let index = 0;
+    
+    function showLanguage() {
+        container.innerHTML = `
+            <div class="language-display">
+                <h3 class="language-name">${languages[index].lang}</h3>
+                <p class="language-text">${languages[index].text}</p>
+            </div>
+        `;
         
-        // Restart the language cycling
-        const gratitudeLanguages = [
-            { lang: "English", text: "Thank you, Cindy." },
-            { lang: "Spanish", text: "Gracias, Cindy." },
-            { lang: "French", text: "Merci, Cindy." },
-            { lang: "German", text: "Danke, Cindy." },
-            { lang: "Italian", text: "Grazie, Cindy." },
-            { lang: "Portuguese", text: "Obrigado, Cindy." },
-            { lang: "Japanese", text: "ありがとう, Cindy." },
-            { lang: "Korean", text: "감사합니다, Cindy." },
-            { lang: "Chinese", text: "谢谢, Cindy." },
-            { lang: "Arabic", text: "شكراً, Cindy." },
-            { lang: "Russian", text: "Спасибо, Cindy." },
-            { lang: "Hindi", text: "धन्यवाद, Cindy." }
-        ];
-        
-        let currentIndex = 0;
-        
-        function showNextLanguage() {
-            if (currentIndex >= gratitudeLanguages.length) {
-                currentIndex = 0;
-            }
-            
-            const language = gratitudeLanguages[currentIndex];
-            container.innerHTML = `
-                <div class="language-display">
-                    <h3 class="language-name">${language.lang}</h3>
-                    <p class="language-text">${language.text}</p>
-                </div>
-            `;
-            
-            // Text-to-speech
-            if ('speechSynthesis' in window) {
-                const utterance = new SpeechSynthesisUtterance(language.text);
-                utterance.lang = getLanguageCode(language.lang);
-                utterance.rate = 0.8;
-                speechSynthesis.speak(utterance);
-            }
-            
-            currentIndex++;
-            languageLoop = setTimeout(showNextLanguage, 1333);
+        // Text-to-speech
+        if ('speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(languages[index].text);
+            utterance.lang = getLanguageCode(languages[index].lang);
+            utterance.rate = 0.8;
+            speechSynthesis.speak(utterance);
         }
         
-        showNextLanguage();
+        index = (index + 1) % languages.length;
+        setTimeout(showLanguage, 1333);
+    }
+    
+    showLanguage();
+}
+
+// Zen Gratitude - Simple meditation
+let isMeditating = false;
+
+function startZenGratitude() {
+    const container = document.getElementById('meditationContainer');
+    const button = document.getElementById('meditationButton');
+    
+    if (!container) return;
+    
+    // Hide button
+    if (button) button.style.display = 'none';
+    
+    // Stop if already meditating
+    if (isMeditating) return;
+    isMeditating = true;
+    
+    const affirmations = [
+        "Breathe in gratitude...",
+        "Thank you, Cindy, for your kindness.",
+        "Breathe out appreciation...",
+        "Thank you, Cindy, for your support.",
+        "Breathe in peace...",
+        "Thank you, Cindy, for being you.",
+        "Breathe out love...",
+        "Thank you, Cindy, for everything."
+    ];
+    
+    let index = 0;
+    
+    function showAffirmation() {
+        container.innerHTML = `
+            <div class="meditation-content">
+                <div class="breathing-circle"></div>
+                <p class="meditation-text">${affirmations[index]}</p>
+            </div>
+        `;
+        
+        index = (index + 1) % affirmations.length;
+        setTimeout(showAffirmation, 3000);
+    }
+    
+    showAffirmation();
+}
+
+function addSinglePageButtonHandlers() {
+    // Global Gratitude button
+    const languagesButton = document.getElementById('languagesButton');
+    if (languagesButton) {
+        languagesButton.addEventListener('click', startGlobalGratitude);
+    }
+    
+    // Zen Gratitude button
+    const meditationButton = document.getElementById('meditationButton');
+    if (meditationButton) {
+        meditationButton.addEventListener('click', startZenGratitude);
     }
 }
 
-function restartMeditation() {
-    // Stop any existing meditation session
-    if (meditationSession) {
-        clearInterval(meditationSession);
-        meditationSession = null;
-    }
-    
-    // Restart meditation
-    const container = document.getElementById('meditationContainer');
-    if (container) {
-        // Clear existing content
-        container.innerHTML = '';
-        
-        // Restart meditation
-        const affirmations = [
-            "Breathe in gratitude...",
-            "Thank you, Cindy, for your kindness.",
-            "Breathe out appreciation...",
-            "Thank you, Cindy, for your support.",
-            "Breathe in peace...",
-            "Thank you, Cindy, for being you.",
-            "Breathe out love...",
-            "Thank you, Cindy, for everything."
-        ];
-        
-        let currentIndex = 0;
-        
-        function showNextAffirmation() {
-            if (currentIndex >= affirmations.length) {
-                currentIndex = 0;
-            }
-            
-            container.innerHTML = `
-                <div class="meditation-content">
-                    <div class="breathing-circle"></div>
-                    <p class="meditation-text">${affirmations[currentIndex]}</p>
-                </div>
-            `;
-            
-            currentIndex++;
-            meditationSession = setTimeout(showNextAffirmation, 3000);
-        }
-        
-        showNextAffirmation();
-    }
-}
 
 
 function removePageNavigation() {
