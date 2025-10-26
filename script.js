@@ -195,6 +195,10 @@ function initSinglePage() {
     window.startZenGratitude = startZenGratitude;
 }
 
+// ALSO make them global immediately when declared
+window.startGlobalGratitude = startGlobalGratitude;
+window.startZenGratitude = startZenGratitude;
+
 // Global Gratitude - Simple language cycling
 let isLanguageCycling = false;
 
@@ -320,26 +324,46 @@ function startZenGratitude() {
 function addSinglePageButtonHandlers() {
     console.log('Setting up button handlers...');
     
-    // Global Gratitude button
+    // Global Gratitude button - MULTIPLE methods
     const languagesButton = document.getElementById('languagesButton');
     console.log('Languages button found:', languagesButton);
     if (languagesButton) {
+        // Method 1: onclick attribute (already in HTML)
+        // Method 2: addEventListener as backup
         languagesButton.addEventListener('click', function(e) {
-            console.log('Languages button clicked!');
+            console.log('Languages button clicked via addEventListener!');
             e.preventDefault();
+            e.stopPropagation();
             startGlobalGratitude();
         });
+        // Method 3: Also try onclick property
+        languagesButton.onclick = function(e) {
+            console.log('Languages button clicked via onclick property!');
+            e.preventDefault();
+            e.stopPropagation();
+            startGlobalGratitude();
+        };
     }
     
-    // Zen Gratitude button
+    // Zen Gratitude button - MULTIPLE methods
     const meditationButton = document.getElementById('meditationButton');
     console.log('Meditation button found:', meditationButton);
     if (meditationButton) {
+        // Method 1: onclick attribute (already in HTML)
+        // Method 2: addEventListener as backup
         meditationButton.addEventListener('click', function(e) {
-            console.log('Meditation button clicked!');
+            console.log('Meditation button clicked via addEventListener!');
             e.preventDefault();
+            e.stopPropagation();
             startZenGratitude();
         });
+        // Method 3: Also try onclick property
+        meditationButton.onclick = function(e) {
+            console.log('Meditation button clicked via onclick property!');
+            e.preventDefault();
+            e.stopPropagation();
+            startZenGratitude();
+        };
     }
     
     console.log('Button handlers set up complete');
