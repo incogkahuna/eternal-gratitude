@@ -13,6 +13,8 @@ let touchEndX = 0;
 let touchEndY = 0;
 let isPulling = false;
 let pullDistance = 0;
+let lastTouchTime = 0;
+let touchVelocity = 0;
 
 // Initialize page-specific functionality
 document.addEventListener('DOMContentLoaded', function() {
@@ -535,6 +537,8 @@ function handleKeyDown(e) {
 function handleTouchStart(e) {
     touchStartX = e.touches[0].clientX;
     touchStartY = e.touches[0].clientY;
+    lastTouchTime = Date.now();
+    touchVelocity = 0;
 }
 
 function handleTouchMove(e) {
@@ -543,18 +547,30 @@ function handleTouchMove(e) {
     touchEndX = e.touches[0].clientX;
     touchEndY = e.touches[0].clientY;
     
-    // Check for vertical scroll
+    // Calculate velocity for momentum-based scrolling
+    const currentTime = Date.now();
+    const timeDelta = currentTime - lastTouchTime;
     const deltaX = touchEndX - touchStartX;
     const deltaY = touchEndY - touchStartY;
     
-    // Vertical scroll detected
-    if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 100) {
-        if (deltaY > 0) {
-            // Scroll down - go to previous page (since we're going backwards in the flow)
-            navigateToPreviousPage();
-        } else {
-            // Scroll up - go to next page
-            navigateToNextPage();
+    if (timeDelta > 0) {
+        touchVelocity = Math.abs(deltaY) / timeDelta;
+    }
+    
+    // Vertical scroll detected with Instagram-like sensitivity and momentum
+    if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 60) {
+        // Add momentum-based threshold (faster swipes = lower threshold)
+        const threshold = touchVelocity > 2 ? 40 : 80;
+        
+        if (Math.abs(deltaY) > threshold) {
+            // Add momentum and smooth transition
+            if (deltaY > 0) {
+                // Scroll down - go to previous page with smooth transition
+                smoothNavigateToPreviousPage();
+            } else {
+                // Scroll up - go to next page with smooth transition
+                smoothNavigateToNextPage();
+            }
         }
     }
 }
@@ -578,6 +594,36 @@ function navigateToNextPage() {
     const currentIndex = pages.indexOf(currentPage);
     const nextIndex = currentIndex < pages.length - 1 ? currentIndex + 1 : 0;
     window.location.href = pages[nextIndex];
+}
+
+function smoothNavigateToPreviousPage() {
+    // Add Instagram-like smooth transition
+    const pages = ['languages.html', 'counter.html', 'meditation.html', 'index.html'];
+    const currentIndex = pages.indexOf(currentPage);
+    const previousIndex = currentIndex > 0 ? currentIndex - 1 : pages.length - 1;
+    
+    // Add smooth fade transition
+    document.body.style.transition = 'opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+    document.body.style.opacity = '0.7';
+    
+    setTimeout(() => {
+        window.location.href = pages[previousIndex];
+    }, 150);
+}
+
+function smoothNavigateToNextPage() {
+    // Add Instagram-like smooth transition
+    const pages = ['languages.html', 'counter.html', 'meditation.html', 'index.html'];
+    const currentIndex = pages.indexOf(currentPage);
+    const nextIndex = currentIndex < pages.length - 1 ? currentIndex + 1 : 0;
+    
+    // Add smooth fade transition
+    document.body.style.transition = 'opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+    document.body.style.opacity = '0.7';
+    
+    setTimeout(() => {
+        window.location.href = pages[nextIndex];
+    }, 150);
 }
 
 function addPullToRefresh() {
