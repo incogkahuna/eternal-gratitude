@@ -189,6 +189,10 @@ function initSinglePage() {
     
     // Remove page navigation for single page
     removePageNavigation();
+    
+    // Make functions globally accessible for onclick handlers
+    window.startGlobalGratitude = startGlobalGratitude;
+    window.startZenGratitude = startZenGratitude;
 }
 
 // Global Gratitude - Simple language cycling
