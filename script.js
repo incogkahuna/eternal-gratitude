@@ -22,6 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add mobile gesture support
     addMobileGestures();
     
+    // Add keyboard navigation support
+    addKeyboardNavigation();
+    
     // Initialize based on current page
     switch(currentPage) {
         case 'index.html':
@@ -514,6 +517,21 @@ function addMobileGestures() {
     addHapticFeedback();
 }
 
+function addKeyboardNavigation() {
+    // Add keyboard event listeners for desktop navigation
+    document.addEventListener('keydown', handleKeyDown);
+}
+
+function handleKeyDown(e) {
+    if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        navigateToNextPage();
+    } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        navigateToPreviousPage();
+    }
+}
+
 function handleTouchStart(e) {
     touchStartX = e.touches[0].clientX;
     touchStartY = e.touches[0].clientY;
@@ -525,17 +543,17 @@ function handleTouchMove(e) {
     touchEndX = e.touches[0].clientX;
     touchEndY = e.touches[0].clientY;
     
-    // Check for horizontal swipe
+    // Check for vertical scroll
     const deltaX = touchEndX - touchStartX;
     const deltaY = touchEndY - touchStartY;
     
-    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
-        // Horizontal swipe detected
-        if (deltaX > 0) {
-            // Swipe right - go to previous page
+    // Vertical scroll detected
+    if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 100) {
+        if (deltaY > 0) {
+            // Scroll down - go to previous page (since we're going backwards in the flow)
             navigateToPreviousPage();
         } else {
-            // Swipe left - go to next page
+            // Scroll up - go to next page
             navigateToNextPage();
         }
     }
@@ -549,14 +567,14 @@ function handleTouchEnd(e) {
 }
 
 function navigateToPreviousPage() {
-    const pages = ['index.html', 'counter.html', 'meditation.html', 'languages.html'];
+    const pages = ['languages.html', 'counter.html', 'meditation.html', 'index.html'];
     const currentIndex = pages.indexOf(currentPage);
     const previousIndex = currentIndex > 0 ? currentIndex - 1 : pages.length - 1;
     window.location.href = pages[previousIndex];
 }
 
 function navigateToNextPage() {
-    const pages = ['index.html', 'counter.html', 'meditation.html', 'languages.html'];
+    const pages = ['languages.html', 'counter.html', 'meditation.html', 'index.html'];
     const currentIndex = pages.indexOf(currentPage);
     const nextIndex = currentIndex < pages.length - 1 ? currentIndex + 1 : 0;
     window.location.href = pages[nextIndex];
