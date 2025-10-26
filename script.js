@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     switch(currentPage) {
         case 'index.html':
         case '':
-            initFeedPage();
+            initSinglePage();
             break;
         case 'counter.html':
             initCounterPage();
@@ -169,6 +169,155 @@ function initFeedPage() {
             }, i * 50);
         }
     }
+}
+
+// Single Page - All sections in one continuous scroll
+function initSinglePage() {
+    console.log('Initializing single page with all sections');
+    
+    // Initialize all sections
+    initLanguagesSection();
+    initCounterSection();
+    initMeditationSection();
+    initInfiniteSection();
+    
+    // Remove page navigation for single page
+    removePageNavigation();
+}
+
+// Individual section initializers for single page
+function initLanguagesSection() {
+    const container = document.getElementById('languagesContainer');
+    if (!container) return;
+    
+    const gratitudeLanguages = [
+        { lang: "English", text: "Thank you, Cindy." },
+        { lang: "Spanish", text: "Gracias, Cindy." },
+        { lang: "French", text: "Merci, Cindy." },
+        { lang: "German", text: "Danke, Cindy." },
+        { lang: "Italian", text: "Grazie, Cindy." },
+        { lang: "Portuguese", text: "Obrigado, Cindy." },
+        { lang: "Japanese", text: "ありがとう, Cindy." },
+        { lang: "Korean", text: "감사합니다, Cindy." },
+        { lang: "Chinese", text: "谢谢, Cindy." },
+        { lang: "Arabic", text: "شكراً, Cindy." },
+        { lang: "Russian", text: "Спасибо, Cindy." },
+        { lang: "Hindi", text: "धन्यवाद, Cindy." }
+    ];
+    
+    let currentIndex = 0;
+    
+    function showNextLanguage() {
+        if (currentIndex >= gratitudeLanguages.length) {
+            currentIndex = 0;
+        }
+        
+        const language = gratitudeLanguages[currentIndex];
+        container.innerHTML = `
+            <div class="language-display">
+                <h3 class="language-name">${language.lang}</h3>
+                <p class="language-text">${language.text}</p>
+            </div>
+        `;
+        
+        // Text-to-speech
+        if ('speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(language.text);
+            utterance.lang = getLanguageCode(language.lang);
+            utterance.rate = 0.8;
+            speechSynthesis.speak(utterance);
+        }
+        
+        currentIndex++;
+        setTimeout(showNextLanguage, 1333); // 3x faster
+    }
+    
+    showNextLanguage();
+}
+
+function initCounterSection() {
+    const counterDisplay = document.getElementById('counterDisplay');
+    if (!counterDisplay) return;
+    
+    let currentCount = 0;
+    const targetCount = 999999;
+    
+    function updateCounter() {
+        if (currentCount < targetCount) {
+            currentCount += Math.floor(Math.random() * 3) + 1;
+            counterDisplay.innerHTML = `<span class="digit">${currentCount.toLocaleString()}</span>`;
+            setTimeout(updateCounter, 100);
+        }
+    }
+    
+    updateCounter();
+}
+
+function initMeditationSection() {
+    const container = document.getElementById('meditationContainer');
+    if (!container) return;
+    
+    const affirmations = [
+        "Breathe in gratitude...",
+        "Thank you, Cindy, for your kindness.",
+        "Breathe out appreciation...",
+        "Thank you, Cindy, for your support.",
+        "Breathe in peace...",
+        "Thank you, Cindy, for being you.",
+        "Breathe out love...",
+        "Thank you, Cindy, for everything."
+    ];
+    
+    let currentIndex = 0;
+    
+    function showNextAffirmation() {
+        if (currentIndex >= affirmations.length) {
+            currentIndex = 0;
+        }
+        
+        container.innerHTML = `
+            <div class="meditation-content">
+                <div class="breathing-circle"></div>
+                <p class="meditation-text">${affirmations[currentIndex]}</p>
+            </div>
+        `;
+        
+        currentIndex++;
+        setTimeout(showNextAffirmation, 3000);
+    }
+    
+    showNextAffirmation();
+}
+
+function initInfiniteSection() {
+    const feedContainer = document.getElementById('feedContainer');
+    if (!feedContainer) return;
+    
+    let isGenerating = false;
+    
+    // Generate initial batch
+    generateGratitudeBatch(20);
+    
+    // Infinite scroll
+    window.addEventListener('scroll', function() {
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1000 && !isGenerating) {
+            isGenerating = true;
+            setTimeout(() => {
+                generateGratitudeBatch(15);
+                isGenerating = false;
+            }, 500);
+        }
+    });
+}
+
+function removePageNavigation() {
+    // Remove touch navigation for single page
+    document.removeEventListener('touchstart', handleTouchStart);
+    document.removeEventListener('touchmove', handleTouchMove);
+    document.removeEventListener('touchend', handleTouchEnd);
+    
+    // Remove keyboard navigation for single page
+    document.removeEventListener('keydown', handleKeyDown);
 }
 
 // Counter Page - Split-flap Counter
