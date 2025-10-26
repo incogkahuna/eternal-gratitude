@@ -147,6 +147,15 @@ body {
     scroll-snap-align: start;
 }
 
+/* Ensure containers work within sections */
+.page-section .languages-container,
+.page-section .counter-container,
+.page-section .meditation-container,
+.page-section .feed-container {
+    width: 100%;
+    max-width: 100%;
+}
+
 .section-header {
     text-align: center;
     margin-bottom: 2rem;
