@@ -195,17 +195,28 @@ function initSinglePage() {
 let isLanguageCycling = false;
 
 function startGlobalGratitude() {
+    console.log('startGlobalGratitude called');
     const container = document.getElementById('languagesContainer');
     const button = document.getElementById('languagesButton');
     
-    if (!container) return;
+    console.log('Container:', container);
+    console.log('Button:', button);
+    
+    if (!container) {
+        console.error('No languagesContainer found!');
+        return;
+    }
     
     // Hide button
     if (button) button.style.display = 'none';
     
     // Stop if already cycling
-    if (isLanguageCycling) return;
+    if (isLanguageCycling) {
+        console.log('Already cycling, returning');
+        return;
+    }
     isLanguageCycling = true;
+    console.log('Starting language cycling');
     
     const languages = [
         { lang: "English", text: "Thank you, Cindy." },
@@ -251,17 +262,28 @@ function startGlobalGratitude() {
 let isMeditating = false;
 
 function startZenGratitude() {
+    console.log('startZenGratitude called');
     const container = document.getElementById('meditationContainer');
     const button = document.getElementById('meditationButton');
     
-    if (!container) return;
+    console.log('Container:', container);
+    console.log('Button:', button);
+    
+    if (!container) {
+        console.error('No meditationContainer found!');
+        return;
+    }
     
     // Hide button
     if (button) button.style.display = 'none';
     
     // Stop if already meditating
-    if (isMeditating) return;
+    if (isMeditating) {
+        console.log('Already meditating, returning');
+        return;
+    }
     isMeditating = true;
+    console.log('Starting meditation');
     
     const affirmations = [
         "Breathe in gratitude...",
@@ -292,17 +314,31 @@ function startZenGratitude() {
 }
 
 function addSinglePageButtonHandlers() {
+    console.log('Setting up button handlers...');
+    
     // Global Gratitude button
     const languagesButton = document.getElementById('languagesButton');
+    console.log('Languages button found:', languagesButton);
     if (languagesButton) {
-        languagesButton.addEventListener('click', startGlobalGratitude);
+        languagesButton.addEventListener('click', function(e) {
+            console.log('Languages button clicked!');
+            e.preventDefault();
+            startGlobalGratitude();
+        });
     }
     
     // Zen Gratitude button
     const meditationButton = document.getElementById('meditationButton');
+    console.log('Meditation button found:', meditationButton);
     if (meditationButton) {
-        meditationButton.addEventListener('click', startZenGratitude);
+        meditationButton.addEventListener('click', function(e) {
+            console.log('Meditation button clicked!');
+            e.preventDefault();
+            startZenGratitude();
+        });
     }
+    
+    console.log('Button handlers set up complete');
 }
 
 
