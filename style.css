@@ -154,12 +154,17 @@ body {
 .page-section .feed-container {
     width: 100%;
     max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .section-header {
     text-align: center;
     margin-bottom: 2rem;
     z-index: 10;
+    width: 100%;
 }
 
 .section-title {
@@ -228,7 +233,7 @@ body {
 .gratitude-line {
     font-size: clamp(1.4rem, 5vw, 2.2rem);
     font-weight: 300;
-    margin-bottom: var(--spacing-md);
+    margin: var(--spacing-md) auto;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeUp 0.8s ease-out forwards;
@@ -240,6 +245,10 @@ body {
     min-height: 44px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: fit-content;
+    max-width: 100%;
 }
 
 .gratitude-line:active {
@@ -474,7 +483,7 @@ body {
     font-size: 1.1rem;
     cursor: pointer;
     transition: var(--transition-fast);
-    margin-top: var(--spacing-lg);
+    margin: var(--spacing-lg) auto 0;
     border-radius: 12px;
     min-height: 48px;
     min-width: 120px;
@@ -581,7 +590,7 @@ body {
     font-size: 1rem;
     cursor: pointer;
     transition: var(--transition-fast);
-    margin: var(--spacing-sm);
+    margin: var(--spacing-sm) auto;
     border-radius: 8px;
     min-height: 44px;
     min-width: 100px;
