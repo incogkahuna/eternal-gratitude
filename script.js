@@ -466,7 +466,7 @@ function initLanguagesPage() {
         currentLanguageIndex = (currentLanguageIndex + 1) % gratitudeLanguages.length;
         
         // Next language after delay
-        setTimeout(showNextLanguage, 4000);
+        setTimeout(showNextLanguage, 1333);
     }
     
     function stopLanguageLoop() {
