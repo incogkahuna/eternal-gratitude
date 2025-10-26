@@ -177,16 +177,14 @@ function initSinglePage() {
     
     // Add a small delay to ensure DOM is fully loaded
     setTimeout(() => {
-        // Initialize all sections using existing working functions
-        initLanguagesPage();
+        // Initialize only the sections that should auto-start
         initCounterPage();
-        initMeditationPage();
         initFeedPage();
         
         // Add button functionality for single page
         addSinglePageButtonHandlers();
         
-        console.log('All sections initialized');
+        console.log('Sections initialized - buttons ready');
     }, 100);
     
     // Remove page navigation for single page
@@ -201,19 +199,128 @@ function addSinglePageButtonHandlers() {
     if (languagesButton) {
         languagesButton.addEventListener('click', function() {
             console.log('Languages button clicked');
-            // Hide the button and start the language cycling
+            // Hide the button
             this.style.display = 'none';
-            // The language cycling should already be running from initLanguagesPage
+            // Force restart language cycling
+            restartLanguageCycling();
         });
     }
     
     if (meditationButton) {
         meditationButton.addEventListener('click', function() {
             console.log('Meditation button clicked');
-            // Hide the button and start the meditation session
+            // Hide the button
             this.style.display = 'none';
-            // The meditation should already be running from initMeditationPage
+            // Force restart meditation
+            restartMeditation();
         });
+    }
+}
+
+function restartLanguageCycling() {
+    // Stop any existing language loop
+    if (languageLoop) {
+        clearTimeout(languageLoop);
+        languageLoop = null;
+    }
+    
+    // Restart language cycling
+    const container = document.getElementById('languagesContainer');
+    if (container) {
+        // Clear existing content
+        container.innerHTML = '';
+        
+        // Restart the language cycling
+        const gratitudeLanguages = [
+            { lang: "English", text: "Thank you, Cindy." },
+            { lang: "Spanish", text: "Gracias, Cindy." },
+            { lang: "French", text: "Merci, Cindy." },
+            { lang: "German", text: "Danke, Cindy." },
+            { lang: "Italian", text: "Grazie, Cindy." },
+            { lang: "Portuguese", text: "Obrigado, Cindy." },
+            { lang: "Japanese", text: "ありがとう, Cindy." },
+            { lang: "Korean", text: "감사합니다, Cindy." },
+            { lang: "Chinese", text: "谢谢, Cindy." },
+            { lang: "Arabic", text: "شكراً, Cindy." },
+            { lang: "Russian", text: "Спасибо, Cindy." },
+            { lang: "Hindi", text: "धन्यवाद, Cindy." }
+        ];
+        
+        let currentIndex = 0;
+        
+        function showNextLanguage() {
+            if (currentIndex >= gratitudeLanguages.length) {
+                currentIndex = 0;
+            }
+            
+            const language = gratitudeLanguages[currentIndex];
+            container.innerHTML = `
+                <div class="language-display">
+                    <h3 class="language-name">${language.lang}</h3>
+                    <p class="language-text">${language.text}</p>
+                </div>
+            `;
+            
+            // Text-to-speech
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(language.text);
+                utterance.lang = getLanguageCode(language.lang);
+                utterance.rate = 0.8;
+                speechSynthesis.speak(utterance);
+            }
+            
+            currentIndex++;
+            languageLoop = setTimeout(showNextLanguage, 1333);
+        }
+        
+        showNextLanguage();
+    }
+}
+
+function restartMeditation() {
+    // Stop any existing meditation session
+    if (meditationSession) {
+        clearInterval(meditationSession);
+        meditationSession = null;
+    }
+    
+    // Restart meditation
+    const container = document.getElementById('meditationContainer');
+    if (container) {
+        // Clear existing content
+        container.innerHTML = '';
+        
+        // Restart meditation
+        const affirmations = [
+            "Breathe in gratitude...",
+            "Thank you, Cindy, for your kindness.",
+            "Breathe out appreciation...",
+            "Thank you, Cindy, for your support.",
+            "Breathe in peace...",
+            "Thank you, Cindy, for being you.",
+            "Breathe out love...",
+            "Thank you, Cindy, for everything."
+        ];
+        
+        let currentIndex = 0;
+        
+        function showNextAffirmation() {
+            if (currentIndex >= affirmations.length) {
+                currentIndex = 0;
+            }
+            
+            container.innerHTML = `
+                <div class="meditation-content">
+                    <div class="breathing-circle"></div>
+                    <p class="meditation-text">${affirmations[currentIndex]}</p>
+                </div>
+            `;
+            
+            currentIndex++;
+            meditationSession = setTimeout(showNextAffirmation, 3000);
+        }
+        
+        showNextAffirmation();
     }
 }
 
