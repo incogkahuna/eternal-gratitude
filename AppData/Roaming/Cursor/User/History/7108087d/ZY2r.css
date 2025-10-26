@@ -1,0 +1,202 @@
+/* ================================================
+   Gratitude Generator API - Styles
+   ================================================ */
+
+.api-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Terminal Window */
+.terminal {
+  background: #0a0a0a;
+  border: 2px solid var(--color-cyan);
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+  overflow: hidden;
+}
+
+.terminal-header {
+  background: var(--color-bg-tertiary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-cyan);
+}
+
+.terminal-title {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-cyan);
+}
+
+.terminal-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.terminal-buttons span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: block;
+}
+
+.btn-close { background: #ff5f56; }
+.btn-minimize { background: #ffbd2e; }
+.btn-maximize { background: #27c93f; }
+
+.terminal-body {
+  padding: var(--spacing-md);
+  font-family: var(--font-body);
+  min-height: 400px;
+}
+
+.prompt {
+  color: var(--color-amber);
+  margin-bottom: var(--spacing-sm);
+  font-weight: 500;
+}
+
+.prompt::before {
+  content: '> ';
+  color: var(--color-magenta);
+}
+
+/* Form Styles */
+.input-section {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+  display: block;
+  color: var(--color-cyan);
+  margin-bottom: var(--spacing-xs);
+  font-size: 0.9rem;
+}
+
+.form-group textarea {
+  background: var(--color-bg);
+  border: 1px solid var(--color-cyan);
+  color: var(--color-white);
+  font-family: var(--font-body);
+  resize: vertical;
+}
+
+.form-group textarea:focus {
+  border-color: var(--color-magenta);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+}
+
+/* Response Section */
+.response-section {
+  margin-top: var(--spacing-lg);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--color-bg-tertiary);
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#response-output {
+  background: var(--color-bg);
+  border: 1px solid var(--color-cyan);
+  border-radius: 4px;
+  padding: var(--spacing-md);
+  color: var(--color-cyan);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  line-height: 1.6;
+}
+
+/* Typewriter effect for response */
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 1s steps(40);
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Loading dots animation */
+.loading-dots::after {
+  content: '';
+  animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+  0%, 20% { content: '.'; }
+  40% { content: '..'; }
+  60%, 100% { content: '...'; }
+}
+
+/* API Info Cards */
+.api-info {
+  margin-top: var(--spacing-lg);
+}
+
+.api-info h3 {
+  color: var(--color-white);
+  margin-bottom: var(--spacing-md);
+  font-family: var(--font-heading);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.info-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-bg-tertiary);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  transition: var(--transition-medium);
+}
+
+.info-card:hover {
+  border-color: var(--color-cyan);
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+.info-card h4 {
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-xs);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.info-card code {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--color-white);
+  margin-top: var(--spacing-xs);
+}
+
+@media (max-width: 768px) {
+  .terminal-body {
+    padding: var(--spacing-sm);
+    min-height: 300px;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}

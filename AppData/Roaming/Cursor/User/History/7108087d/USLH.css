@@ -1,0 +1,285 @@
+/* Send Page Specific Styles */
+
+.send-container {
+    flex: 1;
+    padding: 2rem 0;
+}
+
+.send-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.send-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #00f3ff, #ff00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.send-header p {
+    color: #888;
+    font-size: 1.1rem;
+}
+
+.api-interface {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+/* Terminal Window */
+.terminal-window {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.terminal-header {
+    background: #2a2a2a;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #333;
+}
+
+.terminal-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.btn.close {
+    background: #ff5f56;
+}
+
+.btn.minimize {
+    background: #ffbd2e;
+}
+
+.btn.maximize {
+    background: #27ca3f;
+}
+
+.terminal-title {
+    color: #888;
+    font-size: 0.9rem;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.terminal-body {
+    padding: 1rem;
+    min-height: 300px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.terminal-output {
+    margin-bottom: 1rem;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.terminal-line {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.prompt {
+    color: #00f3ff;
+    margin-right: 0.5rem;
+    font-weight: 600;
+}
+
+.command {
+    color: #fff;
+    flex: 1;
+}
+
+.terminal-input-line {
+    display: flex;
+    align-items: center;
+}
+
+.terminal-input-line input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    outline: none;
+    flex: 1;
+}
+
+.terminal-input-line input::placeholder {
+    color: #666;
+}
+
+/* API Response */
+.api-response {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.api-response:hover {
+    border-color: rgba(0, 243, 255, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 243, 255, 0.1);
+}
+
+.response-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+}
+
+.response-header h3 {
+    color: #00f3ff;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.send-btn {
+    background: linear-gradient(45deg, #00f3ff, #ff00ff);
+    color: #000;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.send-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 243, 255, 0.3);
+}
+
+.send-btn:active {
+    transform: translateY(0);
+}
+
+.response-content {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 1rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #fff;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    margin: 0;
+}
+
+/* Response status colors */
+.response-content.success {
+    border-color: #00ff00;
+    color: #00ff00;
+}
+
+.response-content.error {
+    border-color: #ff0000;
+    color: #ff0000;
+}
+
+.response-content.loading {
+    border-color: #ffb700;
+    color: #ffb700;
+}
+
+/* Terminal scrollbar */
+.terminal-output::-webkit-scrollbar {
+    width: 6px;
+}
+
+.terminal-output::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.terminal-output::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 3px;
+}
+
+.terminal-output::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Psychedelic mode styles */
+.psychedelic-mode .terminal-window {
+    border-color: #ff00ff;
+    box-shadow: 0 8px 25px rgba(255, 0, 255, 0.3);
+}
+
+.psychedelic-mode .api-response {
+    border-color: rgba(255, 0, 255, 0.4);
+    background: linear-gradient(45deg, rgba(255, 0, 255, 0.1), rgba(0, 243, 255, 0.1));
+}
+
+.psychedelic-mode .send-btn {
+    animation: rainbow 1s linear infinite;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .send-header h2 {
+        font-size: 2rem;
+    }
+    
+    .api-interface {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .terminal-body {
+        min-height: 250px;
+    }
+    
+    .response-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .send-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .terminal-body {
+        padding: 0.75rem;
+        min-height: 200px;
+    }
+    
+    .api-response {
+        padding: 1rem;
+    }
+    
+    .response-content {
+        font-size: 0.8rem;
+    }
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You Cindy - Infinite Gratitude Feed</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages/feed.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <h1 class="site-title">Thank You Cindy</h1>
+            <p class="site-subtitle">An endless stream of gratitude</p>
+        </header>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link active">Feed</a>
+            <a href="counter.html" class="nav-link">Counter</a>
+            <a href="send.html" class="nav-link">Send</a>
+            <a href="languages.html" class="nav-link">Languages</a>
+        </nav>
+
+        <main class="feed-container">
+            <div class="feed-header">
+                <h2>Infinite Thank-You Feed</h2>
+                <p>Scroll down to see endless gratitude</p>
+            </div>
+            
+            <div id="thankYouFeed" class="thank-you-feed">
+                <!-- Thank you messages will be generated here -->
+            </div>
+            
+            <div class="loading-indicator" id="loadingIndicator">
+                <div class="spinner"></div>
+                <p>Loading more gratitude...</p>
+            </div>
+        </main>
+
+        <footer class="main-footer">
+            <p>Built with 💜 for Cindy</p>
+            <p class="easter-egg-hint">💡 Try typing "CINDY" anywhere!</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="pages/feed.js"></script>
+</body>
+</html>

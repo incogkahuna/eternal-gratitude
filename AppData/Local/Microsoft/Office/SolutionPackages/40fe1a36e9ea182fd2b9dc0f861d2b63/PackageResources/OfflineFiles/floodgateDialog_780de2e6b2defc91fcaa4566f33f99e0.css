@@ -1,0 +1,59 @@
+/* If you need to ensure the HTML/body elements also take full height */
+html, body, #centro-ref {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+#centro-ref {
+    display: grid;
+    place-items: center;  /* Centers in both directions */
+}
+/*
+* Temporal fix to conflicting background colors due to theme inconsistency
+*/
+#centro-ref > div:first-child, #centro-ref > div:first-child > div {
+    /* inherit background color from office win32 theme */
+    background-color: inherit;
+}
+/*
+* Temporal fix to fixed margin on the privacy statement container
+*/
+#centro-ref  #obf-DxPrivacyStatementContainer {
+    width: 100%!important;
+}
+
+/*
+* Universal padding for all content containers
+*/
+#centro-ref  #DxToastContentContainer {
+    padding: 10px 20px 10px;
+}
+
+.NoOverflow, .NoOverflow > div {
+    overflow-y: hidden;
+}
+
+#survey-container {
+    position: relative;
+}
+.close-button {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    z-index: 1000;
+    display: none;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+}
+.close-button:hover {
+    background-color: #e5212b;
+    color: #F3F2F1 !important;
+}
+
+/*# sourceMappingURL=floodgateDialog.css.map*/

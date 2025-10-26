@@ -1,0 +1,195 @@
+/* Counter Page Specific Styles */
+
+.counter-container {
+    flex: 1;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.counter-header {
+    margin-bottom: 3rem;
+}
+
+.counter-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #00f3ff, #ff00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.counter-header p {
+    color: #888;
+    font-size: 1.1rem;
+}
+
+.counter-display {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(0, 243, 255, 0.3);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.counter-display::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.1), transparent);
+    animation: scan 3s ease-in-out infinite;
+}
+
+@keyframes scan {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.counter-number {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 4rem;
+    font-weight: 600;
+    color: #00f3ff;
+    text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+    margin-bottom: 1rem;
+    line-height: 1;
+    animation: counterGlow 2s ease-in-out infinite;
+}
+
+@keyframes counterGlow {
+    0%, 100% {
+        text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 30px rgba(0, 243, 255, 0.8), 0 0 40px rgba(0, 243, 255, 0.6);
+    }
+}
+
+.counter-label {
+    font-size: 1.2rem;
+    color: #888;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.counter-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.stat-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 0, 255, 0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 0, 255, 0.2);
+    border-color: rgba(255, 0, 255, 0.4);
+}
+
+.stat-number {
+    display: block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ff00ff;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Counter animation */
+.counter-number.animating {
+    animation: counterPulse 0.5s ease-out;
+}
+
+@keyframes counterPulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Psychedelic mode styles */
+.psychedelic-mode .counter-number {
+    animation: rainbow 1s linear infinite, counterGlow 2s ease-in-out infinite;
+}
+
+.psychedelic-mode .stat-number {
+    animation: rainbow 1.5s linear infinite;
+}
+
+.psychedelic-mode .counter-display {
+    border-color: rgba(255, 0, 255, 0.6);
+    background: linear-gradient(45deg, rgba(255, 0, 255, 0.1), rgba(0, 243, 255, 0.1));
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .counter-header h2 {
+        font-size: 2rem;
+    }
+    
+    .counter-number {
+        font-size: 3rem;
+    }
+    
+    .counter-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .stat-item {
+        padding: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .counter-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .counter-number {
+        font-size: 2.5rem;
+    }
+    
+    .counter-display {
+        padding: 1rem;
+    }
+    
+    .stat-number {
+        font-size: 1.2rem;
+    }
+}

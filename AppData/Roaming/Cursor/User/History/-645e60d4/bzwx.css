@@ -1,0 +1,499 @@
+/* ThankYouCindy.com - Global Styles */
+
+/* CSS Variables */
+:root {
+    --bg-primary: #0a0a0b;
+    --text-primary: #eaeaea;
+    --accent-cyan: #3faac4;
+    --font-mono: 'IBM Plex Mono', monospace;
+    --font-grotesk: 'Space Grotesk', sans-serif;
+    --transition-smooth: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 8rem;
+}
+
+/* Reset and Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-mono);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.4;
+    overflow-x: hidden;
+    min-height: 100vh;
+    opacity: 0;
+    animation: fadeIn 1.2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    background: rgba(10, 10, 11, 0.8);
+    border-bottom: 1px solid rgba(234, 234, 234, 0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-sm) var(--spacing-md);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.wordmark {
+    font-family: var(--font-grotesk);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+}
+
+.nav {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.nav-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    transition: var(--transition-fast);
+    position: relative;
+}
+
+.nav-link:hover {
+    color: var(--accent-cyan);
+    text-shadow: 0 0 8px rgba(63, 170, 196, 0.3);
+}
+
+.nav-link.active {
+    color: var(--accent-cyan);
+    border-bottom: 2px solid var(--accent-cyan);
+}
+
+/* Main Content */
+.main {
+    padding-top: 80px;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Feed Page Styles */
+.feed-container {
+    padding: var(--spacing-xl) var(--spacing-md);
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(15, 15, 18, 0.8) 100%);
+    min-height: 100vh;
+}
+
+.feed-container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(63, 170, 196, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(63, 170, 196, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(63, 170, 196, 0.01) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.gratitude-line {
+    font-size: clamp(1.2rem, 4vw, 2.5rem);
+    font-weight: 300;
+    margin-bottom: var(--spacing-md);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease-out forwards;
+    line-height: 1.6;
+}
+
+.gratitude-line:nth-child(odd) {
+    font-weight: 400;
+}
+
+.gratitude-line:nth-child(3n) {
+    font-weight: 500;
+    color: var(--accent-cyan);
+}
+
+.gratitude-line:nth-child(5n) {
+    opacity: 0.7;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Font variations for gratitude lines */
+.gratitude-line.font-1 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 300;
+}
+
+.gratitude-line.font-2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 400;
+}
+
+.gratitude-line.font-3 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.gratitude-line.font-4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+}
+
+.gratitude-line.font-5 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+}
+
+.gratitude-line.font-6 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.gratitude-line.font-7 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.gratitude-line.font-8 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+/* Counter Page Styles */
+.counter-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--bg-primary) 0%, #0f0f12 100%);
+}
+
+.counter-container {
+    text-align: center;
+    padding: var(--spacing-xl);
+}
+
+.counter-tagline {
+    font-family: var(--font-grotesk);
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-primary);
+    opacity: 0.8;
+}
+
+.counter-display {
+    font-family: var(--font-mono);
+    font-size: clamp(4rem, 12vw, 8rem);
+    font-weight: 300;
+    color: var(--accent-cyan);
+    margin: var(--spacing-lg) 0;
+    text-shadow: 0 0 20px rgba(63, 170, 196, 0.3);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.1em;
+}
+
+.digit {
+    display: inline-block;
+    transition: var(--transition-smooth);
+    position: relative;
+    width: 0.6em;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(63, 170, 196, 0.1) 0%, rgba(63, 170, 196, 0.05) 100%);
+    border-radius: 4px;
+    padding: 0.1em 0.2em;
+    margin: 0 0.05em;
+}
+
+.digit.changing {
+    animation: flipDigit 0.6s ease-in-out;
+}
+
+@keyframes flipDigit {
+    0% { transform: rotateX(0deg); }
+    50% { transform: rotateX(90deg); }
+    100% { transform: rotateX(0deg); }
+}
+
+.counter-footer {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    opacity: 0.6;
+    margin-top: var(--spacing-lg);
+}
+
+/* Meditation Page Styles */
+.meditation-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: var(--bg-primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.meditation-main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 70%, rgba(63, 170, 196, 0.1) 0%, transparent 60%),
+        radial-gradient(circle at 70% 30%, rgba(63, 170, 196, 0.05) 0%, transparent 60%);
+    animation: breathing 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.meditation-container {
+    text-align: center;
+    padding: var(--spacing-xl);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.meditation-intro {
+    font-family: var(--font-grotesk);
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.4;
+    margin-bottom: var(--spacing-lg);
+}
+
+.meditation-text {
+    font-family: var(--font-grotesk);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 300;
+    line-height: 1.6;
+    margin: var(--spacing-lg) 0;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease-out forwards;
+}
+
+.meditation-text.breathing {
+    animation: breathing 8s ease-in-out infinite;
+}
+
+@keyframes breathing {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+.begin-button {
+    background: transparent;
+    border: 2px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    margin-top: var(--spacing-lg);
+}
+
+.begin-button:hover {
+    background: var(--accent-cyan);
+    color: var(--bg-primary);
+    box-shadow: 0 0 20px rgba(63, 170, 196, 0.3);
+}
+
+/* Languages Page Styles */
+.languages-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(45deg, var(--bg-primary) 0%, #0f0f12 50%, var(--bg-primary) 100%);
+    position: relative;
+    perspective: 1000px;
+}
+
+.languages-main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 25% 25%, rgba(63, 170, 196, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(63, 170, 196, 0.05) 0%, transparent 50%);
+    animation: slowRotate 20s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes slowRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.languages-container {
+    text-align: center;
+    padding: var(--spacing-xl);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.language-text {
+    font-family: var(--font-grotesk);
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 300;
+    line-height: 1.4;
+    margin: var(--spacing-lg) 0;
+    opacity: 0;
+    transform: translateZ(50px) translateY(30px);
+    animation: slideIn 1.2s ease-out forwards;
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateZ(0) translateY(0);
+    }
+}
+
+.language-label {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    color: var(--accent-cyan);
+    margin-bottom: var(--spacing-sm);
+    opacity: 0.7;
+}
+
+.volume-notice {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    opacity: 0.6;
+    margin-bottom: var(--spacing-lg);
+}
+
+.control-button {
+    background: transparent;
+    border: 1px solid var(--text-primary);
+    color: var(--text-primary);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    margin: var(--spacing-sm);
+}
+
+.control-button:hover {
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    box-shadow: 0 0 10px rgba(63, 170, 196, 0.2);
+}
+
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: var(--spacing-sm);
+    background: rgba(10, 10, 11, 0.8);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(234, 234, 234, 0.1);
+}
+
+.footer p {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    opacity: 0.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-sm);
+    }
+    
+    .nav {
+        gap: var(--spacing-sm);
+    }
+    
+    .main {
+        padding-top: 120px;
+    }
+    
+    .feed-container,
+    .meditation-container,
+    .languages-container {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Cursor Effects */
+.cursor-glow {
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.cursor-glow:hover {
+    text-shadow: 0 0 15px rgba(63, 170, 196, 0.5);
+}

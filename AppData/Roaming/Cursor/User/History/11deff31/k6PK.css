@@ -1,0 +1,317 @@
+/* ================================================
+   ThankYouCindy.com - Shared Styles
+   Design: Option A (IBM Plex Mono + Space Grotesk)
+   Colors: Black, Cyan, Magenta, Amber
+   ================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@300;400;500;700&display=swap');
+
+:root {
+  /* Color Palette */
+  --color-bg: #000000;
+  --color-bg-secondary: #0a0a0a;
+  --color-bg-tertiary: #1a1a1a;
+  --color-cyan: #00f3ff;
+  --color-magenta: #ff00ff;
+  --color-amber: #ffb700;
+  --color-white: #ffffff;
+  --color-gray: #888888;
+  
+  /* Typography */
+  --font-body: 'IBM Plex Mono', monospace;
+  --font-heading: 'Space Grotesk', sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 6rem;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.4s ease;
+  --transition-slow: 0.8s ease;
+}
+
+/* ================================================
+   Global Reset & Base Styles
+   ================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-white);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Animated gradient background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    var(--color-bg) 0%,
+    var(--color-bg-secondary) 50%,
+    var(--color-bg-tertiary) 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  z-index: -1;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-sm);
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  background: linear-gradient(135deg, var(--color-cyan), var(--color-magenta));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: textGlow 3s ease-in-out infinite;
+}
+
+@keyframes textGlow {
+  0%, 100% { filter: drop-shadow(0 0 10px var(--color-cyan)); }
+  50% { filter: drop-shadow(0 0 20px var(--color-magenta)); }
+}
+
+a {
+  color: var(--color-cyan);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-magenta);
+  text-shadow: 0 0 10px var(--color-magenta);
+}
+
+/* ================================================
+   Navigation Bar
+   ================================================ */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 243, 255, 0.3);
+  padding: var(--spacing-sm) var(--spacing-md);
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav .logo {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-cyan), var(--color-amber));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+nav ul li a {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition: var(--transition-fast);
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  border-color: var(--color-cyan);
+  background: rgba(0, 243, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+}
+
+/* ================================================
+   Main Container
+   ================================================ */
+
+main {
+  margin-top: 80px; /* Account for fixed nav */
+  min-height: calc(100vh - 80px);
+  padding: var(--spacing-lg) var(--spacing-md);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ================================================
+   Buttons & Interactive Elements
+   ================================================ */
+
+button,
+.btn {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: transparent;
+  color: var(--color-cyan);
+  border: 2px solid var(--color-cyan);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition-medium);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover,
+.btn:hover {
+  background: var(--color-cyan);
+  color: var(--color-bg);
+  box-shadow: 0 0 20px var(--color-cyan);
+  transform: translateY(-2px);
+}
+
+button:active,
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Glow effect on hover */
+button::before,
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(0, 243, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+button:hover::before,
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* ================================================
+   Input Fields
+   ================================================ */
+
+input[type="text"],
+input[type="email"],
+textarea {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: var(--spacing-sm);
+  background: var(--color-bg-secondary);
+  color: var(--color-white);
+  border: 2px solid var(--color-bg-tertiary);
+  border-radius: 4px;
+  transition: var(--transition-fast);
+  width: 100%;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-cyan);
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+}
+
+/* ================================================
+   Utility Classes
+   ================================================ */
+
+.text-center {
+  text-align: center;
+}
+
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+
+.glow-cyan {
+  text-shadow: 0 0 10px var(--color-cyan);
+}
+
+.glow-magenta {
+  text-shadow: 0 0 10px var(--color-magenta);
+}
+
+.glow-amber {
+  text-shadow: 0 0 10px var(--color-amber);
+}
+
+/* ================================================
+   Mobile Responsive
+   ================================================ */
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-sm);
+  }
+  
+  main {
+    margin-top: 140px;
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+}

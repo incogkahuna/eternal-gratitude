@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multilingual Gratitude - Thank You Cindy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages/languages.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <h1 class="site-title">Thank You Cindy</h1>
+            <p class="site-subtitle">Gratitude in every language</p>
+        </header>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Feed</a>
+            <a href="counter.html" class="nav-link">Counter</a>
+            <a href="send.html" class="nav-link">Send</a>
+            <a href="languages.html" class="nav-link active">Languages</a>
+        </nav>
+
+        <main class="languages-container">
+            <div class="languages-header">
+                <h2>Multilingual Gratitude</h2>
+                <p>Thank you in 50+ languages with voice synthesis</p>
+            </div>
+            
+            <div class="language-controls">
+                <button id="startSpeaking" class="speak-btn">Start Speaking</button>
+                <button id="stopSpeaking" class="speak-btn stop">Stop</button>
+                <div class="language-info">
+                    <span id="currentLanguage">Ready to speak</span>
+                </div>
+            </div>
+            
+            <div class="language-grid" id="languageGrid">
+                <!-- Languages will be populated here -->
+            </div>
+            
+            <div class="voice-status">
+                <div class="status-indicator" id="voiceStatus">
+                    <div class="status-dot"></div>
+                    <span>Voice ready</span>
+                </div>
+            </div>
+        </main>
+
+        <footer class="main-footer">
+            <p>Built with 💜 for Cindy</p>
+            <p class="easter-egg-hint">💡 Try typing "CINDY" anywhere!</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="pages/languages.js"></script>
+</body>
+</html>

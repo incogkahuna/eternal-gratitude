@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An infinite feed of gratitude for Cindy">
+  <meta name="keywords" content="thank you, cindy, gratitude, infinite scroll">
+  <meta name="author" content="Daniel">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Thank You Cindy - Infinite Gratitude Feed">
+  <meta property="og:description" content="A surreal web experience of endless thanks">
+  
+  <title>Thank You Cindy | Infinite Feed</title>
+  
+  <!-- Favicon (using emoji for now) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💜</text></svg>">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pages/feed.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">ThankYouCindy.com</div>
+    <ul>
+      <li><a href="index.html">Feed</a></li>
+      <li><a href="counter.html">Counter</a></li>
+      <li><a href="send.html">API</a></li>
+      <li><a href="languages.html">Languages</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <header class="text-center mb-lg">
+        <h1>Infinite Gratitude Feed</h1>
+        <p class="subtitle">A never-ending stream of thanks to Cindy</p>
+      </header>
+      
+      <div id="feed-container">
+        <!-- JavaScript will populate this with thank-you messages -->
+      </div>
+      
+      <div id="loading" class="text-center mt-lg">
+        <p class="glow-cyan">Loading more gratitude...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script src="pages/feed.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speech Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #1a1a1a;
+            color: white;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background: #00f3ff;
+            color: black;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            background: #333;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Web Speech API Test</h1>
+    <button onclick="testSpeech()">Test Speech</button>
+    <button onclick="testMultiple()">Test Multiple Languages</button>
+    <div id="output"></div>
+
+    <script>
+        function log(message) {
+            const output = document.getElementById('output');
+            output.innerHTML += '<div>' + new Date().toLocaleTimeString() + ': ' + message + '</div>';
+            console.log(message);
+        }
+
+        function testSpeech() {
+            log('Testing basic speech synthesis...');
+            
+            if (!('speechSynthesis' in window)) {
+                log('ERROR: Speech synthesis not supported');
+                return;
+            }
+            
+            log('Speech synthesis is supported');
+            
+            const utterance = new SpeechSynthesisUtterance('Hello, this is a test');
+            utterance.onstart = () => log('Speech started');
+            utterance.onend = () => log('Speech ended');
+            utterance.onerror = (event) => log('Speech error: ' + event.error);
+            
+            speechSynthesis.speak(utterance);
+        }
+
+        function testMultiple() {
+            log('Testing multiple languages...');
+            
+            const languages = [
+                { text: 'Hello', lang: 'en-US' },
+                { text: 'Hola', lang: 'es-ES' },
+                { text: 'Bonjour', lang: 'fr-FR' }
+            ];
+            
+            let index = 0;
+            
+            function speakNext() {
+                if (index >= languages.length) {
+                    log('Finished all languages');
+                    return;
+                }
+                
+                const lang = languages[index];
+                log(`Speaking: ${lang.text} (${lang.lang})`);
+                
+                const utterance = new SpeechSynthesisUtterance(lang.text);
+                utterance.lang = lang.lang;
+                utterance.onend = () => {
+                    log(`Finished: ${lang.text}`);
+                    index++;
+                    setTimeout(speakNext, 1000);
+                };
+                utterance.onerror = (event) => log('Error: ' + event.error);
+                
+                speechSynthesis.speak(utterance);
+            }
+            
+            speakNext();
+        }
+
+        // Check on page load
+        window.onload = function() {
+            log('Page loaded');
+            log('Speech synthesis available: ' + ('speechSynthesis' in window));
+            
+            if ('speechSynthesis' in window) {
+                const voices = speechSynthesis.getVoices();
+                log('Available voices: ' + voices.length);
+            }
+        };
+    </script>
+</body>
+</html>

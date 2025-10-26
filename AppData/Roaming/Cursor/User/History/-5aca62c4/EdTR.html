@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send Gratitude - Thank You Cindy</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages/send.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="main-header">
+            <h1 class="site-title">Thank You Cindy</h1>
+            <p class="site-subtitle">Send your gratitude to the universe</p>
+        </header>
+
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link">Feed</a>
+            <a href="counter.html" class="nav-link">Counter</a>
+            <a href="send.html" class="nav-link active">Send</a>
+            <a href="languages.html" class="nav-link">Languages</a>
+        </nav>
+
+        <main class="send-container">
+            <div class="send-header">
+                <h2>Gratitude Generator API</h2>
+                <p>Send your thank you message to Cindy</p>
+            </div>
+            
+            <div class="api-interface">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="btn close"></span>
+                            <span class="btn minimize"></span>
+                            <span class="btn maximize"></span>
+                        </div>
+                        <div class="terminal-title">Gratitude API v2.1.0</div>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-output" id="terminalOutput">
+                            <div class="terminal-line">
+                                <span class="prompt">$</span> 
+                                <span class="command">curl -X POST https://api.thankyoucindy.com/send</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="prompt">$</span> 
+                                <span class="command">curl -X POST https://api.thankyoucindy.com/send</span>
+                            </div>
+                        </div>
+                        <div class="terminal-input-line">
+                            <span class="prompt">$</span>
+                            <input type="text" id="apiInput" placeholder="Enter your gratitude message..." autocomplete="off">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="api-response" id="apiResponse">
+                    <div class="response-header">
+                        <h3>API Response</h3>
+                        <button id="sendButton" class="send-btn">Send Gratitude</button>
+                    </div>
+                    <pre class="response-content" id="responseContent">
+{
+  "status": "ready",
+  "message": "Enter your gratitude message above and click Send Gratitude"
+}
+                    </pre>
+                </div>
+            </div>
+        </main>
+
+        <footer class="main-footer">
+            <p>Built with 💜 for Cindy</p>
+            <p class="easter-egg-hint">💡 Try typing "CINDY" anywhere!</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="pages/send.js"></script>
+</body>
+</html>

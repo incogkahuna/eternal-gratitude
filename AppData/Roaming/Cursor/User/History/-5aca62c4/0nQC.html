@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Send gratitude to Cindy via API">
+  <meta name="keywords" content="thank you, cindy, api, gratitude generator">
+  <meta name="author" content="Daniel">
+  
+  <title>Thank You Cindy | Gratitude API</title>
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💜</text></svg>">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pages/send.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">ThankYouCindy.com</div>
+    <ul>
+      <li><a href="index.html">Feed</a></li>
+      <li><a href="counter.html">Counter</a></li>
+      <li><a href="send.html">API</a></li>
+      <li><a href="languages.html">Languages</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <div class="container">
+      <header class="text-center mb-lg">
+        <h1>Gratitude Generator API</h1>
+        <p class="subtitle">Enterprise-grade gratitude processing system</p>
+      </header>
+      
+      <div class="api-container">
+        <div class="terminal">
+          <div class="terminal-header">
+            <span class="terminal-title">gratitude-api v2.7.3</span>
+            <div class="terminal-buttons">
+              <span class="btn-close"></span>
+              <span class="btn-minimize"></span>
+              <span class="btn-maximize"></span>
+            </div>
+          </div>
+          
+          <div class="terminal-body">
+            <div class="input-section">
+              <p class="prompt">$ POST /api/storeThanks</p>
+              <form id="gratitude-form">
+                <div class="form-group">
+                  <label for="message">Message:</label>
+                  <textarea id="message" name="message" rows="4" placeholder="Your message of gratitude..."></textarea>
+                </div>
+                <button type="submit" class="btn">Send Gratitude</button>
+              </form>
+            </div>
+            
+            <div id="response-section" class="response-section" style="display: none;">
+              <p class="prompt">$ Response:</p>
+              <pre id="response-output"></pre>
+            </div>
+          </div>
+        </div>
+        
+        <div class="api-info mt-md">
+          <h3>API Documentation</h3>
+          <div class="info-grid">
+            <div class="info-card">
+              <h4 class="glow-cyan">Endpoint</h4>
+              <code>/api/storeThanks</code>
+            </div>
+            <div class="info-card">
+              <h4 class="glow-magenta">Method</h4>
+              <code>POST</code>
+            </div>
+            <div class="info-card">
+              <h4 class="glow-amber">Rate Limit</h4>
+              <code>∞ req/sec</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="pages/send.js"></script>
+</body>
+</html>
+

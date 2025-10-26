@@ -1,0 +1,128 @@
+/* ================================================
+   Gratitude Counter Wall - Styles
+   ================================================ */
+
+#counter-display {
+  margin: var(--spacing-xl) 0;
+  padding: var(--spacing-lg);
+  background: var(--color-bg-secondary);
+  border: 2px solid var(--color-cyan);
+  border-radius: 8px;
+  box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+#counter-display::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(0, 243, 255, 0.1),
+    transparent
+  );
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.counter-value {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  color: var(--color-cyan);
+  text-shadow: 
+    0 0 10px var(--color-cyan),
+    0 0 20px var(--color-cyan),
+    0 0 30px var(--color-cyan);
+  margin: var(--spacing-md) 0;
+  font-variant-numeric: tabular-nums;
+  position: relative;
+  z-index: 1;
+}
+
+.counter-label {
+  font-size: 1.5rem;
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: var(--spacing-sm);
+}
+
+.counter-sublabel {
+  font-size: 1.2rem;
+  font-style: italic;
+  margin-top: var(--spacing-xs);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Stats Grid */
+.counter-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.stat-item {
+  padding: var(--spacing-md);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-bg-tertiary);
+  border-radius: 8px;
+  transition: var(--transition-medium);
+}
+
+.stat-item:hover {
+  border-color: var(--color-magenta);
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.2);
+  transform: translateY(-5px);
+}
+
+.stat-value {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-magenta);
+  margin-bottom: var(--spacing-xs);
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--color-gray);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Digit rolling animation */
+.digit-roll {
+  display: inline-block;
+  animation: rollDigit 0.3s ease;
+}
+
+@keyframes rollDigit {
+  0% { transform: translateY(-20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .counter-value {
+    font-size: 3rem;
+    letter-spacing: 0.05em;
+  }
+  
+  .counter-stats {
+    grid-template-columns: 1fr;
+  }
+}

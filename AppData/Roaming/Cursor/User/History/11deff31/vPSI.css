@@ -1,0 +1,214 @@
+/* Thank You Cindy - Shared Styles */
+
+/* CSS Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'IBM Plex Mono', monospace;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+    color: #ffffff;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.main-header {
+    text-align: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+    margin-bottom: 2rem;
+}
+
+.site-title {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #00f3ff, #ff00ff, #ffb700);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease-in-out infinite;
+    margin-bottom: 0.5rem;
+}
+
+.site-subtitle {
+    font-size: 1.2rem;
+    color: #888;
+    font-weight: 300;
+}
+
+/* Navigation */
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    color: #888;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #00f3ff;
+    border-color: rgba(0, 243, 255, 0.3);
+    background: rgba(0, 243, 255, 0.1);
+}
+
+.nav-link.active {
+    color: #ff00ff;
+    border-color: rgba(255, 0, 255, 0.5);
+    background: rgba(255, 0, 255, 0.1);
+}
+
+/* Footer */
+.main-footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(0, 243, 255, 0.2);
+    color: #666;
+}
+
+.easter-egg-hint {
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    opacity: 0.7;
+}
+
+/* Animations */
+@keyframes gradientShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(0, 243, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(0, 243, 255, 0.6), 0 0 30px rgba(0, 243, 255, 0.4);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+@keyframes rainbow {
+    0% { color: #ff0000; }
+    16% { color: #ff8000; }
+    33% { color: #ffff00; }
+    50% { color: #00ff00; }
+    66% { color: #0080ff; }
+    83% { color: #8000ff; }
+    100% { color: #ff0000; }
+}
+
+/* Utility Classes */
+.glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+.pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.rainbow {
+    animation: rainbow 2s linear infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .site-title {
+        font-size: 2rem;
+    }
+    
+    .main-nav {
+        gap: 1rem;
+    }
+    
+    .nav-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-title {
+        font-size: 1.5rem;
+    }
+    
+    .site-subtitle {
+        font-size: 1rem;
+    }
+    
+    .main-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+}
+
+/* Easter Egg Styles */
+.psychedelic-mode {
+    animation: rainbow 0.5s linear infinite;
+}
+
+.psychedelic-mode .site-title {
+    animation: rainbow 0.3s linear infinite;
+}
+
+.psychedelic-mode .nav-link {
+    animation: rainbow 0.4s linear infinite;
+}
+
+.psychedelic-mode .main-footer {
+    animation: rainbow 0.6s linear infinite;
+}

@@ -1,0 +1,385 @@
+#page-header .ms-font-su {
+  color: "MediumSeaGreen"; }
+
+/******************************************************************
+General
+******************************************************************/
+ul {
+  margin-left: 1.4em;
+  padding: 0; }
+
+hr {
+  border: none;
+  height: 1px;
+  color: #ebebeb;
+  background-color: #ebebeb;
+  clear: both; }
+
+img {
+  border: none; }
+
+blockquote {
+  margin-left: 1.4em; }
+
+.warning {
+  background-color: rgba(255, 0, 0, 0.2);
+  border-radius: .25rem; }
+
+.button-doIt {
+  margin: 1em; }
+
+body {
+  height: 100%;
+  max-height: 100%;
+  font-family: "Segoe WP", "Segoe UI", "Arial", sans-serif;
+  font-size: 14px; }
+  body.colorful, body.white, body.olwac {
+    background-color: #E6E6E6; }
+  body.black, body.darkgray {
+    background-color: #262626; }
+  body.colorful, body.white, body.olwac {
+    color: #444444; }
+  body.black, body.darkgray {
+    color: #F0F0F0; }
+
+/******************************************************************
+Scrollbars
+******************************************************************/
+body {
+  scrollbar-base-color: white;
+  scrollbar-arrow-color: #ababab;
+  scrollbar-highlight-color: #ababab;
+  scrollbar-darkshadow-color: white;
+  scrollbar-track-color: white;
+  scrollbar-face-color: white;
+  margin: 0 0 100px; }
+
+html {
+  overflow-y: scroll;
+  position: relative;
+  min-height: 100%; }
+
+/******************************************************************
+Lessons
+******************************************************************/
+.lesson-title {
+  color: #201f1e;
+  display: flex; }
+
+.lessonHeaderNumber {
+  margin-right: 5px; }
+
+.lessonText {
+  margin-left: 16px; }
+
+.intro {
+  font-size: 14px;
+  font-weight: 400; }
+
+.introBtn {
+  margin-top: 12px !important; }
+
+.accordion h4 {
+  font-weight: 600; }
+
+.card p {
+  font-size: 14px; }
+
+.substepContainer {
+  padding-bottom: 7px !important; }
+
+.completedSubstep {
+  text-decoration: line-through; }
+
+strong, b {
+  font-weight: 600; }
+
+.progress-title {
+  font-size: 12px;
+  color: #444444; }
+
+.card-header {
+  background-color: #faf9f8; }
+
+.time {
+  font-weight: 400; }
+
+.accordion span .ms-Icon--Checkbox {
+  color: #505050; }
+
+.ms-Icon--BoxCheckmarkSolid {
+  color: #0078d4; }
+
+.ms-Icon--CheckMark {
+  color: #0078d4;
+  size: 14px; }
+
+.ms-Icon--Back:before {
+  font-size: 12px; }
+
+.ms-Icon--Refresh:before {
+  font-size: 12px; }
+
+.progress {
+  background-color: white; }
+
+.progressBarText {
+  font-size: 12px; }
+  .progressBarText.colorful, .progressBarText.white, .progressBarText.olwac {
+    color: #444444; }
+  .progressBarText.black, .progressBarText.darkgray {
+    color: #F0F0F0; }
+
+.btn {
+  border-radius: 0px; }
+
+#feedback .btn {
+  background-color: #c8c8c8; }
+
+.lesson-button {
+  margin-top: 2rem !important; }
+
+.lessonSummaryText {
+  margin-left: 13px; }
+
+.gwImage {
+  margin-top: 16px;
+  margin-bottom: 16px; }
+
+.TutorialHeader {
+  margin-bottom: 12px;
+  font-size: 20px; }
+
+.defaultPara {
+  line-height: 24px; }
+
+.substepBullet {
+  color: #c2c2c2;
+  margin-left: 20px;
+  margin-right: 9px; }
+
+.substepText {
+  padding-left: 6px !important; }
+
+.stepCheckMark {
+  position: relative;
+  top: 2px;
+  width: 0px;
+  height: 0px;
+  color: #000000; }
+
+.successIcon {
+  right: 20px; }
+
+.stepArrow {
+  position: relative;
+  top: 1px;
+  width: 0px;
+  height: 0px;
+  color: #0078D4; }
+
+.stepText {
+  padding-left: 5px; }
+
+.activeStepText {
+  font-weight: 500;
+  padding-left: 5px; }
+
+.activeStepNum {
+  font-weight: 500; }
+
+.activeLessonHeader {
+  font-weight: 500; }
+
+.substepContainer {
+  padding: 15px; }
+
+.lessonSuccessAlert {
+  margin-top: -20px !important;
+  border-radius: 0px !important;
+  padding-left: 32px !important; }
+
+.lessonSuccessContainer {
+  margin-top: 0px !important; }
+
+.successContinueButton {
+  margin-bottom: 15px !important; }
+
+.accordianContainer {
+  margin-bottom: 20px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-content: stretch; }
+
+#restart-course {
+  font-size: 12px; }
+
+.restartIcon {
+  font-size: 10px; }
+  .restartIcon.colorful, .restartIcon.white, .restartIcon.olwac {
+    color: #444444; }
+  .restartIcon.black, .restartIcon.darkgray {
+    color: #F0F0F0; }
+
+.restartText {
+  font-size: 12px; }
+  .restartText.colorful, .restartText.white, .restartText.olwac {
+    color: #444444; }
+  .restartText.black, .restartText.darkgray {
+    color: #F0F0F0; }
+
+/******************************************************************
+Collapse
+******************************************************************/
+.Collapsible.colorful, .Collapsible.white, .Collapsible.olwac {
+  background-color: #f2f2f2; }
+
+.Collapsible.black, .Collapsible.darkgray {
+  background-color: #454545; }
+
+.card-body.colorful, .card-body.white, .card-body.olwac {
+  background-color: #FFF; }
+
+.card-body.black, .card-body.darkgray {
+  background-color: #666; }
+
+.Collapsible__contentOuter {
+  width: 100%;
+  height: 100%; }
+
+.stepHeaderText {
+  margin: 10px; }
+
+.activeStep {
+  height: 100%; }
+  .activeStep.colorful, .activeStep.white, .activeStep.olwac {
+    background-color: #CDE6F7; }
+  .activeStep.black, .activeStep.darkgray {
+    background-color: #030303; }
+
+.firstStep {
+  border-top: 1px solid #e6e6e6 !important; }
+
+/******************************************************************
+Footer
+******************************************************************/
+#body-container {
+  padding-bottom: 71.5px;
+  margin-top: 28px; }
+
+hr {
+  border-top: 2px solid #DFDFDF;
+  margin-bottom: 10px;
+  margin-top: 20px; }
+
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 71.5px;
+  width: 100%;
+  overflow: hidden; }
+
+/******************************************************************
+Typography
+******************************************************************/
+h1 {
+  font-family: "Segoe WP Light", "Segoe UI", "Arial", sans-serif;
+  font-size: 22px;
+  line-height: 26px;
+  font-weight: 500; }
+
+h2, h3, h4, h5, h6, th {
+  font-family: "Segoe UI", "Arial", sans-serif; }
+
+h2 {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 500; }
+
+h3, h4, h5, h6 {
+  font-size: 14px;
+  line-height: 20px; }
+
+h3 {
+  font-weight: 400; }
+
+h4, h5, h6 {
+  font-weight: normal; }
+
+h1.colorful, h1.white, h1.olwac, h2.colorful, h2.white, h2.olwac, h3.colorful, h3.white, h3.olwac, h4.colorful, h4.white, h4.olwac, h5.colorful, h5.white, h5.olwac, h6.colorful, h6.white, h6.olwac {
+  color: #444444; }
+
+h1.black, h1.darkgray, h2.black, h2.darkgray, h3.black, h3.darkgray, h4.black, h4.darkgray, h5.black, h5.darkgray, h6.black, h6.darkgray {
+  color: #F0F0F0; }
+
+a {
+  text-decoration: none; }
+  a:focus, a:hover, a:active {
+    text-decoration: underline; }
+  a.disabled {
+    pointer-events: none;
+    cursor: default;
+    color: #B9B9B9; }
+  a.colorful, a.white, a.olwac {
+    color: #1d2cd3; }
+  a.white {
+    color: #1d2cd3; }
+  a.black {
+    color: #1664A7; }
+  a.darkgray {
+    color: #1664A7; }
+  a.olwac {
+    color: #1d2cd3; }
+
+form, input, select, button, textarea {
+  font-family: "Segoe WP", "Segoe UI", "Arial", sans-serif;
+  font-size: 12px;
+  line-height: 16px; }
+
+.ms-Icon--Forward {
+  color: #0078d4;
+  font-size: 14px; }
+
+ul {
+  margin-left: 1.4em;
+  padding: 10px; }
+
+hr {
+  border: none;
+  height: 1px;
+  color: #ebebeb;
+  background-color: #ebebeb;
+  clear: both; }
+
+img {
+  border: none; }
+
+.warning {
+  background-color: rgba(255, 0, 0, 0.2);
+  border-radius: 0px;
+  padding: 10px; }
+
+html {
+  overflow-y: scroll;
+  position: relative;
+  min-height: 100%; }
+
+.feedback-button.colorful, .feedback-button.white, .feedback-button.olwac {
+  background-color: rgba(0, 0, 0, 0.2); }
+
+.feedback-button.black, .feedback-button.darkgray {
+  background-color: #f7f7f7; }
+
+.feedback-button:hover.colorful, .feedback-button:hover.white, .feedback-button:hover.olwac {
+  background-color: #6e6e6e; }
+
+.feedback-button:hover.black, .feedback-button:hover.darkgray {
+  background-color: #737373; }
+
+.feedback-label.colorful, .feedback-label.white, .feedback-label.olwac {
+  color: #444444; }
+
+.feedback-label.black, .feedback-label.darkgray {
+  color: #F0F0F0; }

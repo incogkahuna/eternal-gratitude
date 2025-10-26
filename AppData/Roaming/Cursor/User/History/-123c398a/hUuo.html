@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test - ThankYouCindy</title>
+    <style>
+        body { font-family: monospace; padding: 20px; background: #000; color: #00f3ff; }
+        .test-result { margin: 10px 0; padding: 10px; border: 1px solid #00f3ff; }
+        .success { border-color: #00ff00; color: #00ff00; }
+        .error { border-color: #ff0000; color: #ff0000; }
+        button { background: #00f3ff; color: #000; border: none; padding: 10px 20px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>API Test - ThankYouCindy</h1>
+    <button onclick="testAPI()">Test API Endpoint</button>
+    <div id="results"></div>
+
+    <script>
+        async function testAPI() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<div class="test-result">Testing API...</div>';
+            
+            try {
+                const response = await fetch('/api/storeThanks', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: 'Test gratitude message for Cindy'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultsDiv.innerHTML = `
+                        <div class="test-result success">
+                            ✅ API Test Successful!<br>
+                            Status: ${data.status}<br>
+                            Message ID: ${data.data.message_id}<br>
+                            Gratitude Score: ${data.data.gratitude_score}<br>
+                            Response: ${JSON.stringify(data, null, 2)}
+                        </div>
+                    `;
+                } else {
+                    resultsDiv.innerHTML = `
+                        <div class="test-result error">
+                            ❌ API Test Failed<br>
+                            Status: ${response.status}<br>
+                            Error: ${data.message || 'Unknown error'}
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultsDiv.innerHTML = `
+                    <div class="test-result error">
+                        ❌ Network Error<br>
+                        ${error.message}
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

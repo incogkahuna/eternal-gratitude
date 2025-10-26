@@ -1,0 +1,266 @@
+/* Languages Page Specific Styles */
+
+.languages-container {
+    flex: 1;
+    padding: 2rem 0;
+}
+
+.languages-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.languages-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #00f3ff, #ff00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.languages-header p {
+    color: #888;
+    font-size: 1.1rem;
+}
+
+.sound-notice {
+    color: #00f3ff !important;
+    font-size: 1.2rem !important;
+    font-weight: 600;
+    margin-top: 1rem;
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+}
+
+.language-controls {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    border-radius: 8px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3rem;
+}
+
+.speak-btn {
+    background: linear-gradient(45deg, #00f3ff, #ff00ff);
+    color: #000;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 1rem;
+    margin: 0 0.5rem;
+}
+
+.speak-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 243, 255, 0.3);
+}
+
+.speak-btn.stop {
+    background: linear-gradient(45deg, #ff0000, #ff8000);
+}
+
+.speak-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.language-info {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #00f3ff;
+    font-weight: 500;
+}
+
+.language-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.language-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 0, 255, 0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.language-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 0, 255, 0.2);
+    border-color: rgba(255, 0, 255, 0.4);
+}
+
+.language-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 0, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.language-item:hover::before {
+    left: 100%;
+}
+
+.language-item.speaking {
+    border-color: rgba(0, 243, 255, 0.6);
+    background: rgba(0, 243, 255, 0.1);
+    animation: speakingPulse 1s ease-in-out infinite;
+}
+
+@keyframes speakingPulse {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(0, 243, 255, 0.6), 0 0 30px rgba(0, 243, 255, 0.4);
+    }
+}
+
+.language-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.language-text {
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+}
+
+.language-code {
+    font-size: 0.9rem;
+    color: #00f3ff;
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.voice-status {
+    text-align: center;
+    margin-top: 3rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    border-radius: 8px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: #888;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00f3ff;
+    animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.status-indicator.speaking .status-dot {
+    background: #ff00ff;
+    animation: statusPulse 0.5s ease-in-out infinite;
+}
+
+.status-indicator.error .status-dot {
+    background: #ff0000;
+    animation: none;
+}
+
+/* Psychedelic mode styles */
+.psychedelic-mode .language-item {
+    animation: rainbow 3s linear infinite;
+}
+
+.psychedelic-mode .language-item.speaking {
+    animation: rainbow 1s linear infinite, speakingPulse 1s ease-in-out infinite;
+}
+
+.psychedelic-mode .speak-btn {
+    animation: rainbow 1s linear infinite;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .languages-header h2 {
+        font-size: 2rem;
+    }
+    
+    .language-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 0.8rem;
+    }
+    
+    .language-item {
+        padding: 1rem;
+    }
+    
+    .language-name {
+        font-size: 1.1rem;
+    }
+    
+    .speak-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .languages-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .language-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .language-controls {
+        padding: 1rem;
+    }
+    
+    .speak-btn {
+        display: block;
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+}

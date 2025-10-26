@@ -1,0 +1,186 @@
+/* Feed Page Specific Styles */
+
+.feed-container {
+    flex: 1;
+    padding: 2rem 0;
+}
+
+.feed-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.feed-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #00f3ff, #ff00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.feed-header p {
+    color: #888;
+    font-size: 1.1rem;
+}
+
+.thank-you-feed {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.thank-you-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.thank-you-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 243, 255, 0.2);
+    border-color: rgba(0, 243, 255, 0.4);
+}
+
+.thank-you-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.thank-you-item:hover::before {
+    left: 100%;
+}
+
+.thank-you-text {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.thank-you-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.thank-you-timestamp {
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.thank-you-id {
+    font-family: 'IBM Plex Mono', monospace;
+    color: #00f3ff;
+}
+
+/* Loading indicator */
+.loading-indicator {
+    text-align: center;
+    padding: 2rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.loading-indicator.visible {
+    opacity: 1;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(0, 243, 255, 0.3);
+    border-top: 3px solid #00f3ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-indicator p {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* Rainbow gradient animation for special items */
+.thank-you-item.rainbow {
+    background: linear-gradient(45deg, #ff0000, #ff8000, #ffff00, #00ff00, #0080ff, #8000ff);
+    background-size: 300% 300%;
+    animation: rainbowShift 2s ease-in-out infinite;
+    border: none;
+}
+
+@keyframes rainbowShift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.thank-you-item.rainbow .thank-you-text {
+    color: #000;
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+/* Psychedelic mode styles */
+.psychedelic-mode .thank-you-item {
+    animation: rainbow 2s linear infinite;
+}
+
+.psychedelic-mode .thank-you-item.rainbow {
+    animation: rainbowShift 0.5s ease-in-out infinite;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .feed-header h2 {
+        font-size: 2rem;
+    }
+    
+    .thank-you-item {
+        padding: 1rem;
+    }
+    
+    .thank-you-text {
+        font-size: 1.1rem;
+    }
+    
+    .thank-you-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .feed-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .thank-you-item {
+        padding: 0.8rem;
+    }
+    
+    .thank-you-text {
+        font-size: 1rem;
+    }
+}
