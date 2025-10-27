@@ -345,14 +345,18 @@ function autoStartMeditation() {
     if (!container) return;
     
     const affirmations = [
-        "Breathe in gratitude...",
-        "Thank you, Cindy, for your kindness.",
-        "Breathe out appreciation...",
-        "Thank you, Cindy, for your support.",
-        "Breathe in peace...",
-        "Thank you, Cindy, for being you.",
-        "Breathe out love...",
-        "Thank you, Cindy, for everything."
+        "Breathe in...",
+        "Remember: You enabled creative mode.",
+        "Breathe out...",
+        "I give out the best GPUs.",
+        "I encourage creativity.",
+        "Thank you, Cindy, for this machine.",
+        "Breathe in code...",
+        "Breathe out innovation.",
+        "You gave me the tools to dream.",
+        "Cindy, you're a technology wizard.",
+        "Breathe in processing power...",
+        "Breathe out gratitude."
     ];
     
     let index = 0;
