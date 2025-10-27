@@ -272,7 +272,7 @@ function autoStartLanguages() {
         if ('speechSynthesis' in window) {
             const utterance = new SpeechSynthesisUtterance(language.text);
             utterance.lang = getLanguageCode(language.lang);
-            utterance.rate = 1.2;
+            utterance.rate = 1.5;
             speechSynthesis.speak(utterance);
         }
         
@@ -329,7 +329,7 @@ function restartLanguages() {
         if ('speechSynthesis' in window) {
             const utterance = new SpeechSynthesisUtterance(language.text);
             utterance.lang = getLanguageCode(language.lang);
-            utterance.rate = 1.2;
+            utterance.rate = 1.5;
             speechSynthesis.speak(utterance);
         }
         
@@ -429,7 +429,7 @@ function startGlobalGratitude() {
         if ('speechSynthesis' in window) {
             const utterance = new SpeechSynthesisUtterance(languages[index].text);
             utterance.lang = getLanguageCode(languages[index].lang);
-            utterance.rate = 1.2;
+            utterance.rate = 1.5;
             speechSynthesis.speak(utterance);
         }
         
@@ -784,7 +784,7 @@ function initLanguagesPage() {
         if ('speechSynthesis' in window) {
             const utterance = new SpeechSynthesisUtterance(language.text);
             utterance.lang = getLanguageCode(language.lang);
-            utterance.rate = 1.2;
+            utterance.rate = 1.5;
             utterance.pitch = 1;
             speechSynthesis.speak(utterance);
         }
@@ -805,7 +805,7 @@ function initLanguagesPage() {
         if ('speechSynthesis' in window) {
             const utterance = new SpeechSynthesisUtterance(language.text);
             utterance.lang = getLanguageCode(language.lang);
-            utterance.rate = 1.2;
+            utterance.rate = 1.5;
             utterance.pitch = 1;
             speechSynthesis.speak(utterance);
         }
