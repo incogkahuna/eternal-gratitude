@@ -177,10 +177,10 @@ function initSinglePage() {
     
     // Add a small delay to ensure DOM is fully loaded
     setTimeout(() => {
-        // Initialize ALL sections to auto-start
-        initLanguagesPage();
+        // Initialize sections - languages and meditation need custom auto-start
+        autoStartLanguages();
         initCounterPage();
-        initMeditationPage();
+        autoStartMeditation();
         initFeedPage();
         
         console.log('All sections initialized and auto-started');
@@ -192,6 +192,60 @@ function initSinglePage() {
     // Make functions globally accessible for onclick handlers
     window.startGlobalGratitude = startGlobalGratitude;
     window.startZenGratitude = startZenGratitude;
+}
+
+// Auto-start languages for single page
+function autoStartLanguages() {
+    const container = document.getElementById('languagesContainer');
+    if (!container) return;
+    
+    const languages = [
+        { lang: "English", text: "Thank you, Cindy." },
+        { lang: "Spanish", text: "Gracias, Cindy." },
+        { lang: "French", text: "Merci, Cindy." },
+        { lang: "German", text: "Danke, Cindy." },
+        { lang: "Italian", text: "Grazie, Cindy." },
+        { lang: "Portuguese", text: "Obrigado, Cindy." },
+        { lang: "Japanese", text: "ありがとう, Cindy." },
+        { lang: "Korean", text: "감사합니다, Cindy." },
+        { lang: "Chinese", text: "谢谢, Cindy." },
+        { lang: "Arabic", text: "شكراً, Cindy." },
+        { lang: "Russian", text: "Спасибо, Cindy." },
+        { lang: "Hindi", text: "धन्यवाद, Cindy." }
+    ];
+    
+    let index = 0;
+    function showLang() {
+        container.innerHTML = '<div class="language-display"><h3 class="language-name">' + languages[index].lang + '</h3><p class="language-text">' + languages[index].text + '</p></div>';
+        index = (index + 1) % languages.length;
+        setTimeout(showLang, 1333);
+    }
+    showLang();
+}
+
+// Auto-start meditation for single page
+function autoStartMeditation() {
+    const container = document.getElementById('meditationContainer');
+    if (!container) return;
+    
+    const affirmations = [
+        "Breathe in gratitude...",
+        "Thank you, Cindy, for your kindness.",
+        "Breathe out appreciation...",
+        "Thank you, Cindy, for your support.",
+        "Breathe in peace...",
+        "Thank you, Cindy, for being you.",
+        "Breathe out love...",
+        "Thank you, Cindy, for everything."
+    ];
+    
+    let index = 0;
+    function showAffirmation() {
+        container.innerHTML = '<div class="meditation-content"><div class="breathing-circle"></div><p class="meditation-text">' + affirmations[index] + '</p></div>';
+        index = (index + 1) % affirmations.length;
+        setTimeout(showAffirmation, 3000);
+    }
+    showAffirmation();
 }
 
 // ALSO make them global immediately when declared
