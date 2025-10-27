@@ -192,6 +192,7 @@ function initSinglePage() {
     // Make functions globally accessible for onclick handlers
     window.startGlobalGratitude = startGlobalGratitude;
     window.startZenGratitude = startZenGratitude;
+    window.stopLanguages = stopLanguages;
 }
 
 // Helper function for language codes
@@ -214,6 +215,9 @@ function getLanguageCode(lang) {
 }
 
 // Auto-start languages for single page
+let languageTimeout = null;
+let isLanguageRunning = true;
+
 function autoStartLanguages() {
     const container = document.getElementById('languagesContainer');
     if (!container) return;
@@ -235,8 +239,10 @@ function autoStartLanguages() {
     
     let index = 0;
     function showLang() {
+        if (!isLanguageRunning) return;
+        
         const language = languages[index];
-        container.innerHTML = '<div class="language-display"><h3 class="language-name">' + language.lang + '</h3><p class="language-text">' + language.text + '</p></div>';
+        container.innerHTML = '<div class="language-display"><h3 class="language-name">' + language.lang + '</h3><p class="language-text">' + language.text + '</p></div><button class="control-button" onclick="stopLanguages()">Stop</button>';
         
         // Text-to-speech
         if ('speechSynthesis' in window) {
@@ -247,9 +253,25 @@ function autoStartLanguages() {
         }
         
         index = (index + 1) % languages.length;
-        setTimeout(showLang, 1333);
+        languageTimeout = setTimeout(showLang, 1333);
     }
     showLang();
+}
+
+function stopLanguages() {
+    isLanguageRunning = false;
+    if (languageTimeout) {
+        clearTimeout(languageTimeout);
+        languageTimeout = null;
+    }
+    if ('speechSynthesis' in window) {
+        speechSynthesis.cancel();
+    }
+    
+    const container = document.getElementById('languagesContainer');
+    if (container) {
+        container.innerHTML = '<div class="language-display"><h3 class="language-name">Stopped</h3><p class="language-text">Thank you, Cindy.</p></div>';
+    }
 }
 
 // Auto-start meditation for single page
