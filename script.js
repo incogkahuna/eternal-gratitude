@@ -194,6 +194,25 @@ function initSinglePage() {
     window.startZenGratitude = startZenGratitude;
 }
 
+// Helper function for language codes
+function getLanguageCode(lang) {
+    const codes = {
+        'English': 'en-US',
+        'Spanish': 'es-ES',
+        'French': 'fr-FR',
+        'German': 'de-DE',
+        'Japanese': 'ja-JP',
+        'Korean': 'ko-KR',
+        'Italian': 'it-IT',
+        'Portuguese': 'pt-PT',
+        'Russian': 'ru-RU',
+        'Chinese': 'zh-CN',
+        'Arabic': 'ar-SA',
+        'Hindi': 'hi-IN'
+    };
+    return codes[lang] || 'en-US';
+}
+
 // Auto-start languages for single page
 function autoStartLanguages() {
     const container = document.getElementById('languagesContainer');
