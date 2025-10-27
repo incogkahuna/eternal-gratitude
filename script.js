@@ -291,9 +291,11 @@ function autoStartLanguages() {
             
             // Text-to-speech
             if ('speechSynthesis' in window) {
-                const utterance = new SpeechSynthesisUtterance(language.text);
+                // Replace commas with spaces to avoid speech synthesis reading "comma"
+                const speechText = language.text.replace(/,/g, ' ');
+                const utterance = new SpeechSynthesisUtterance(speechText);
                 utterance.lang = getLanguageCode(language.lang);
-                utterance.rate = 1.5;
+                utterance.rate = 1.3;
                 speechSynthesis.speak(utterance);
             }
             
@@ -349,9 +351,11 @@ function restartLanguages() {
         
         // Text-to-speech
         if ('speechSynthesis' in window) {
-            const utterance = new SpeechSynthesisUtterance(language.text);
+            // Replace commas with spaces to avoid speech synthesis reading "comma"
+            const speechText = language.text.replace(/,/g, ' ');
+            const utterance = new SpeechSynthesisUtterance(speechText);
             utterance.lang = getLanguageCode(language.lang);
-            utterance.rate = 1.5;
+            utterance.rate = 1.3;
             speechSynthesis.speak(utterance);
         }
         
