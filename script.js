@@ -438,8 +438,13 @@ function removePageNavigation() {
     document.removeEventListener('touchmove', handleTouchMove);
     document.removeEventListener('touchend', handleTouchEnd);
     
-    // Remove keyboard navigation for single page
-    document.removeEventListener('keydown', handleKeyDown);
+    // Add keyboard shortcut to stop languages
+    document.addEventListener('keydown', function(e) {
+        if (e.code === 'Space' || e.key === ' ') {
+            e.preventDefault();
+            stopLanguages();
+        }
+    });
 }
 
 // Counter Page - Split-flap Counter
