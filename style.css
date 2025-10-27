@@ -147,6 +147,51 @@ body {
     scroll-snap-align: start;
 }
 
+/* Intro Section - Elegant Welcome */
+.intro-section {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.intro-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(63, 170, 196, 0.15) 0%, transparent 70%);
+    animation: pulse 6s ease-in-out infinite;
+}
+
+.intro-title {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 30px rgba(63, 170, 196, 0.5);
+    animation: fadeInUp 1.5s ease-out;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Languages Section - Global/World Theme */
 .languages-section {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
