@@ -216,7 +216,17 @@ function autoStartLanguages() {
     
     let index = 0;
     function showLang() {
-        container.innerHTML = '<div class="language-display"><h3 class="language-name">' + languages[index].lang + '</h3><p class="language-text">' + languages[index].text + '</p></div>';
+        const language = languages[index];
+        container.innerHTML = '<div class="language-display"><h3 class="language-name">' + language.lang + '</h3><p class="language-text">' + language.text + '</p></div>';
+        
+        // Text-to-speech
+        if ('speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(language.text);
+            utterance.lang = getLanguageCode(language.lang);
+            utterance.rate = 0.8;
+            speechSynthesis.speak(utterance);
+        }
+        
         index = (index + 1) % languages.length;
         setTimeout(showLang, 1333);
     }
