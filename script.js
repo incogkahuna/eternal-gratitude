@@ -237,12 +237,16 @@ function autoStartLanguages() {
         { lang: "Hindi", text: "धन्यवाद, Cindy." }
     ];
     
+    // Add stop button once
+    container.innerHTML = '<div id="languageDisplay"></div><button class="control-button" onclick="stopLanguages()">Stop</button>';
+    const displayDiv = document.getElementById('languageDisplay');
+    
     let index = 0;
     function showLang() {
         if (!isLanguageRunning) return;
         
         const language = languages[index];
-        container.innerHTML = '<div class="language-display"><h3 class="language-name">' + language.lang + '</h3><p class="language-text">' + language.text + '</p></div><button class="control-button" onclick="stopLanguages()">Stop</button>';
+        displayDiv.innerHTML = '<h3 class="language-name">' + language.lang + '</h3><p class="language-text">' + language.text + '</p>';
         
         // Text-to-speech
         if ('speechSynthesis' in window) {
@@ -268,9 +272,9 @@ function stopLanguages() {
         speechSynthesis.cancel();
     }
     
-    const container = document.getElementById('languagesContainer');
-    if (container) {
-        container.innerHTML = '<div class="language-display"><h3 class="language-name">Stopped</h3><p class="language-text">Thank you, Cindy.</p></div>';
+    const displayDiv = document.getElementById('languageDisplay');
+    if (displayDiv) {
+        displayDiv.innerHTML = '<h3 class="language-name">Stopped</h3><p class="language-text">Thank you, Cindy.</p>';
     }
 }
 
