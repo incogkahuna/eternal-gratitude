@@ -346,17 +346,18 @@ function autoStartMeditation() {
     
     const affirmations = [
         "Breathe in...",
-        "Remember: You enabled creative mode.",
+        "I enabled creative mode.",
         "Breathe out...",
         "I give out the best GPUs.",
         "I encourage creativity.",
-        "Thank you, Cindy, for this machine.",
         "Breathe in code...",
         "Breathe out innovation.",
-        "You gave me the tools to dream.",
-        "Cindy, you're a technology wizard.",
+        "I provide the tools to dream.",
+        "I am a technology wizard.",
         "Breathe in processing power...",
-        "Breathe out gratitude."
+        "Breathe out gratitude.",
+        "Remember: Danny is thankful.",
+        "He loves his machine."
     ];
     
     let index = 0;
