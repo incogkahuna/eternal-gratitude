@@ -353,7 +353,7 @@ function autoStartLanguages() {
                         restartLanguages();
                     }
                 });
-            }, { threshold: 0.5 });
+            }, { threshold: 0.1 });
             
             observer.observe(languagesSection);
         }
