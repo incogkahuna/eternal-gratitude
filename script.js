@@ -237,8 +237,8 @@ function autoStartLanguages() {
         { lang: "Hindi", text: "धन्यवाद, Cindy." }
     ];
     
-    // Add stop button once
-    container.innerHTML = '<div id="languageDisplay"></div><button class="control-button" onclick="stopLanguages()">Stop</button>';
+    // Start without stop button since buttons don't work in single-page format
+    container.innerHTML = '<div id="languageDisplay"></div>';
     const displayDiv = document.getElementById('languageDisplay');
     
     let index = 0;
