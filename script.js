@@ -268,12 +268,12 @@ function autoStartLanguages() {
         { lang: "German", text: "Danke Cindy" },
         { lang: "Italian", text: "Grazie Cindy" },
         { lang: "Portuguese", text: "Obrigado Cindy" },
-        { lang: "Japanese", text: "ありがとう Cindy" },
-        { lang: "Korean", text: "감사합니다 Cindy" },
-        { lang: "Chinese", text: "谢谢 Cindy" },
-        { lang: "Arabic", text: "شكراً Cindy" },
-        { lang: "Russian", text: "Спасибо Синди" },
-        { lang: "Hindi", text: "धन्यवाद Cindy" },
+        { lang: "Japanese", text: "ありがとう" },
+        { lang: "Korean", text: "감사합니다" },
+        { lang: "Chinese", text: "谢谢" },
+        { lang: "Arabic", text: "شكراً" },
+        { lang: "Russian", text: "Спасибо" },
+        { lang: "Hindi", text: "धन्यवाद" },
         { lang: "Dutch", text: "Dank je Cindy" },
         { lang: "Swedish", text: "Tack Cindy" },
         { lang: "Norwegian", text: "Takk Cindy" },
@@ -308,10 +308,10 @@ function autoStartLanguages() {
         { lang: "Lithuanian", text: "Ačiū Cindy" },
         { lang: "Maltese", text: "Grazzi Cindy" },
         { lang: "Icelandic", text: "Takk Cindy" },
-        { lang: "Bengali", text: "ধন্যবাদ Cindy" },
-        { lang: "Punjabi", text: "ਧੰਨਵਾਦ Cindy" },
-        { lang: "Tamil", text: "நன்றி Cindy" },
-        { lang: "Urdu", text: "شکریہ Cindy" }
+        { lang: "Bengali", text: "ধন্যবাদ" },
+        { lang: "Punjabi", text: "ਧੰਨਵਾਦ" },
+        { lang: "Tamil", text: "நன்றி" },
+        { lang: "Urdu", text: "شکریہ" }
     ];
     
     // Check if mobile device - add tap to start for audio
@@ -408,12 +408,12 @@ function restartLanguages() {
         { lang: "German", text: "Danke Cindy" },
         { lang: "Italian", text: "Grazie Cindy" },
         { lang: "Portuguese", text: "Obrigado Cindy" },
-        { lang: "Japanese", text: "ありがとう Cindy" },
-        { lang: "Korean", text: "감사합니다 Cindy" },
-        { lang: "Chinese", text: "谢谢 Cindy" },
-        { lang: "Arabic", text: "شكراً Cindy" },
-        { lang: "Russian", text: "Спасибо Синди" },
-        { lang: "Hindi", text: "धन्यवाद Cindy" },
+        { lang: "Japanese", text: "ありがとう" },
+        { lang: "Korean", text: "감사합니다" },
+        { lang: "Chinese", text: "谢谢" },
+        { lang: "Arabic", text: "شكراً" },
+        { lang: "Russian", text: "Спасибо" },
+        { lang: "Hindi", text: "धन्यवाद" },
         { lang: "Dutch", text: "Dank je Cindy" },
         { lang: "Swedish", text: "Tack Cindy" },
         { lang: "Norwegian", text: "Takk Cindy" },
@@ -448,10 +448,10 @@ function restartLanguages() {
         { lang: "Lithuanian", text: "Ačiū Cindy" },
         { lang: "Maltese", text: "Grazzi Cindy" },
         { lang: "Icelandic", text: "Takk Cindy" },
-        { lang: "Bengali", text: "ধন্যবাদ Cindy" },
-        { lang: "Punjabi", text: "ਧੰਨਵਾਦ Cindy" },
-        { lang: "Tamil", text: "நன்றி Cindy" },
-        { lang: "Urdu", text: "شکریہ Cindy" }
+        { lang: "Bengali", text: "ধন্যবাদ" },
+        { lang: "Punjabi", text: "ਧੰਨਵਾਦ" },
+        { lang: "Tamil", text: "நன்றி" },
+        { lang: "Urdu", text: "شکریہ" }
     ];
     
     let index = 0;
