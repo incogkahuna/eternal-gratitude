@@ -374,7 +374,7 @@ function autoStartLanguages() {
             }
             
             index = (index + 1) % languages.length;
-            languageTimeout = setTimeout(showLang, 1333);
+            languageTimeout = setTimeout(showLang, 2000);
         }
         showLang();
     }
