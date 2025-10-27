@@ -220,6 +220,7 @@ let isLanguageRunning = true;
 
 function autoStartLanguages() {
     const container = document.getElementById('languagesContainer');
+    const languagesSection = document.getElementById('languagesSection');
     if (!container) return;
     
     const languages = [
@@ -240,6 +241,21 @@ function autoStartLanguages() {
     // Start without stop button since buttons don't work in single-page format
     container.innerHTML = '<div id="languageDisplay"></div>';
     const displayDiv = document.getElementById('languageDisplay');
+    
+    // Set up IntersectionObserver to stop audio when user scrolls away
+    if (languagesSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting && isLanguageRunning) {
+                    // User scrolled away from languages section - stop audio
+                    console.log('User scrolled away from languages section');
+                    stopLanguages();
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(languagesSection);
+    }
     
     let index = 0;
     function showLang() {
