@@ -238,48 +238,70 @@ function autoStartLanguages() {
         { lang: "Hindi", text: "धन्यवाद, Cindy." }
     ];
     
-    // Start without stop button since buttons don't work in single-page format
-    container.innerHTML = '<div id="languageDisplay"></div>';
-    const displayDiv = document.getElementById('languageDisplay');
+    // Check if mobile device - add tap to start for audio
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     
-    // Set up IntersectionObserver to stop/start audio based on scroll position
-    if (languagesSection) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting && isLanguageRunning) {
-                    // User scrolled away from languages section - stop audio
-                    console.log('User scrolled away from languages section');
-                    stopLanguages();
-                } else if (entry.isIntersecting && !isLanguageRunning) {
-                    // User scrolled back to languages section - restart audio
-                    console.log('User scrolled back to languages section');
-                    restartLanguages();
-                }
-            });
-        }, { threshold: 0.5 });
+    if (isMobile) {
+        // Show tap to start message on mobile
+        container.innerHTML = '<div id="languageDisplay"><h3 class="language-name">Tap to start</h3><p class="language-text">Thank you, Cindy.</p></div>';
+        const displayDiv = document.getElementById('languageDisplay');
         
-        observer.observe(languagesSection);
+        // Add tap event listener to unlock audio
+        container.addEventListener('click', function startAudio() {
+            container.removeEventListener('click', startAudio);
+            isLanguageRunning = true;
+            startLanguageCycle();
+        }, { once: true });
+    } else {
+        // Desktop: start immediately
+        container.innerHTML = '<div id="languageDisplay"></div>';
+        const displayDiv = document.getElementById('languageDisplay');
+        isLanguageRunning = true;
+        startLanguageCycle();
     }
     
-    let index = 0;
-    function showLang() {
-        if (!isLanguageRunning) return;
+    function startLanguageCycle() {
+        const displayDiv = document.getElementById('languageDisplay');
         
-        const language = languages[index];
-        displayDiv.innerHTML = '<h3 class="language-name">' + language.lang + '</h3><p class="language-text">' + language.text + '</p>';
-        
-        // Text-to-speech
-        if ('speechSynthesis' in window) {
-            const utterance = new SpeechSynthesisUtterance(language.text);
-            utterance.lang = getLanguageCode(language.lang);
-            utterance.rate = 1.5;
-            speechSynthesis.speak(utterance);
+        // Set up IntersectionObserver to stop/start audio based on scroll position
+        if (languagesSection) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting && isLanguageRunning) {
+                        // User scrolled away from languages section - stop audio
+                        console.log('User scrolled away from languages section');
+                        stopLanguages();
+                    } else if (entry.isIntersecting && !isLanguageRunning) {
+                        // User scrolled back to languages section - restart audio
+                        console.log('User scrolled back to languages section');
+                        restartLanguages();
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            observer.observe(languagesSection);
         }
         
-        index = (index + 1) % languages.length;
-        languageTimeout = setTimeout(showLang, 1333);
+        let index = 0;
+        function showLang() {
+            if (!isLanguageRunning) return;
+            
+            const language = languages[index];
+            displayDiv.innerHTML = '<h3 class="language-name">' + language.lang + '</h3><p class="language-text">' + language.text + '</p>';
+            
+            // Text-to-speech
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(language.text);
+                utterance.lang = getLanguageCode(language.lang);
+                utterance.rate = 1.5;
+                speechSynthesis.speak(utterance);
+            }
+            
+            index = (index + 1) % languages.length;
+            languageTimeout = setTimeout(showLang, 1333);
+        }
+        showLang();
     }
-    showLang();
 }
 
 function stopLanguages() {
