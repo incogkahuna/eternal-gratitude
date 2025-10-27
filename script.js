@@ -242,7 +242,7 @@ function autoStartLanguages() {
     container.innerHTML = '<div id="languageDisplay"></div>';
     const displayDiv = document.getElementById('languageDisplay');
     
-    // Set up IntersectionObserver to stop audio when user scrolls away
+    // Set up IntersectionObserver to stop/start audio based on scroll position
     if (languagesSection) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -250,6 +250,10 @@ function autoStartLanguages() {
                     // User scrolled away from languages section - stop audio
                     console.log('User scrolled away from languages section');
                     stopLanguages();
+                } else if (entry.isIntersecting && !isLanguageRunning) {
+                    // User scrolled back to languages section - restart audio
+                    console.log('User scrolled back to languages section');
+                    restartLanguages();
                 }
             });
         }, { threshold: 0.5 });
@@ -292,6 +296,47 @@ function stopLanguages() {
     if (displayDiv) {
         displayDiv.innerHTML = '<h3 class="language-name">Stopped</h3><p class="language-text">Thank you, Cindy.</p>';
     }
+}
+
+function restartLanguages() {
+    isLanguageRunning = true;
+    const displayDiv = document.getElementById('languageDisplay');
+    if (!displayDiv) return;
+    
+    const languages = [
+        { lang: "English", text: "Thank you, Cindy." },
+        { lang: "Spanish", text: "Gracias, Cindy." },
+        { lang: "French", text: "Merci, Cindy." },
+        { lang: "German", text: "Danke, Cindy." },
+        { lang: "Italian", text: "Grazie, Cindy." },
+        { lang: "Portuguese", text: "Obrigado, Cindy." },
+        { lang: "Japanese", text: "ありがとう, Cindy." },
+        { lang: "Korean", text: "감사합니다, Cindy." },
+        { lang: "Chinese", text: "谢谢, Cindy." },
+        { lang: "Arabic", text: "شكراً, Cindy." },
+        { lang: "Russian", text: "Спасибо, Cindy." },
+        { lang: "Hindi", text: "धन्यवाद, Cindy." }
+    ];
+    
+    let index = 0;
+    function showLang() {
+        if (!isLanguageRunning) return;
+        
+        const language = languages[index];
+        displayDiv.innerHTML = '<h3 class="language-name">' + language.lang + '</h3><p class="language-text">' + language.text + '</p>';
+        
+        // Text-to-speech
+        if ('speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(language.text);
+            utterance.lang = getLanguageCode(language.lang);
+            utterance.rate = 0.8;
+            speechSynthesis.speak(utterance);
+        }
+        
+        index = (index + 1) % languages.length;
+        languageTimeout = setTimeout(showLang, 1333);
+    }
+    showLang();
 }
 
 // Auto-start meditation for single page
